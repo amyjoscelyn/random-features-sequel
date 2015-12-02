@@ -1178,6 +1178,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6MY-dx-dDT">
                                                                 <rect key="frame" x="0.0" y="0.0" width="78" height="78"/>
                                                                 <animations/>
+                                                                <connections>
+                                                                    <action selector="trialButton1Tapped:" destination="wBt-BL-2Pb" eventType="touchUpInside" id="Yfc-ps-dZH"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <animations/>
@@ -1196,6 +1199,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sad-Xa-4qI">
                                                                 <rect key="frame" x="0.0" y="0.0" width="78" height="58"/>
                                                                 <animations/>
+                                                                <connections>
+                                                                    <action selector="trialButton2Tapped:" destination="wBt-BL-2Pb" eventType="touchUpInside" id="Ckj-i9-pjc"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <animations/>
@@ -1214,6 +1220,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bX5-XI-GsW">
                                                                 <rect key="frame" x="0.0" y="0.0" width="78" height="44"/>
                                                                 <animations/>
+                                                                <connections>
+                                                                    <action selector="trialButton3Tapped:" destination="wBt-BL-2Pb" eventType="touchUpInside" id="eMH-gj-Kzk"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <animations/>
@@ -1238,6 +1247,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35r-MD-MVR">
                                                                 <rect key="frame" x="0.0" y="0.0" width="24" height="80"/>
                                                                 <animations/>
+                                                                <connections>
+                                                                    <action selector="trialButton4Tapped:" destination="wBt-BL-2Pb" eventType="touchUpInside" id="Bnh-tl-ndL"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <animations/>
@@ -1257,6 +1269,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="662-sR-Il3">
                                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="62"/>
                                                                 <animations/>
+                                                                <connections>
+                                                                    <action selector="trialButton5Tapped:" destination="wBt-BL-2Pb" eventType="touchUpInside" id="AlH-Ng-A4e"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <animations/>
@@ -1276,6 +1291,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WC4-Y8-5l5">
                                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
                                                                 <animations/>
+                                                                <connections>
+                                                                    <action selector="trialButton6Tapped:" destination="wBt-BL-2Pb" eventType="touchUpInside" id="6TP-vJ-hlY"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <animations/>
