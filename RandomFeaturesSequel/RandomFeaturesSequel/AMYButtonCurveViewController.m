@@ -22,6 +22,7 @@
 
 @property (nonatomic) NSUInteger currentI;
 @property (nonatomic) BOOL borderOn;
+@property (nonatomic) NSUInteger zero;
 
 @end
 
@@ -30,7 +31,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.borderOn = NO;
+    
+    self.trialView1.clipsToBounds = YES;
+    self.trialView2.clipsToBounds = YES;
+    self.trialView3.clipsToBounds = YES;
+    self.trialView4.clipsToBounds = YES;
+    self.trialView5.clipsToBounds = YES;
+    self.trialView6.clipsToBounds = YES;
+    
+    CGColorRef white = [UIColor whiteColor].CGColor;
+    self.zero = 0;
+    
+    self.trialView1.layer.borderColor = white;
+    self.trialView2.layer.borderColor = white;
+    self.trialView3.layer.borderColor = white;
+    self.trialView4.layer.borderColor = white;
+    self.trialView5.layer.borderColor = white;
+    self.trialView6.layer.borderColor = white;
+    self.changeSliderTintButton.layer.borderColor = white;
 }
 
 //whoa! .tintColor changes ALL of the tints on the current view!! (when you've changed UIView.tintColor)
@@ -75,24 +95,25 @@
 
 - (IBAction)trialButton1Tapped:(id)sender
 {
-    self.trialView1.layer.cornerRadius = 0;
-    self.trialView2.layer.cornerRadius = 0;
-    self.trialView3.layer.cornerRadius = 0;
-    self.trialView4.layer.cornerRadius = 0;
-    self.trialView5.layer.cornerRadius = 0;
-    self.trialView6.layer.cornerRadius = 0;
+    self.trialView1.layer.cornerRadius = self.zero;
+    self.trialView2.layer.cornerRadius = self.zero;
+    self.trialView3.layer.cornerRadius = self.zero;
+    self.trialView4.layer.cornerRadius = self.zero;
+    self.trialView5.layer.cornerRadius = self.zero;
+    self.trialView6.layer.cornerRadius = self.zero;
 }
 
 - (IBAction)trialButton2Tapped:(id)sender
 {
     if (self.borderOn)
     {
-        self.trialView1.layer.borderWidth = 0.0f;
-        self.trialView2.layer.borderWidth = 0.0f;
-        self.trialView3.layer.borderWidth = 0.0f;
-        self.trialView4.layer.borderWidth = 0.0f;
-        self.trialView5.layer.borderWidth = 0.0f;
-        self.trialView6.layer.borderWidth = 0.0f;
+        self.trialView1.layer.borderWidth = self.zero;
+        self.trialView2.layer.borderWidth = self.zero;
+        self.trialView3.layer.borderWidth = self.zero;
+        self.trialView4.layer.borderWidth = self.zero;
+        self.trialView5.layer.borderWidth = self.zero;
+        self.trialView6.layer.borderWidth = self.zero;
+        self.changeSliderTintButton.layer.borderWidth = self.zero;
         
         self.borderOn = NO;
     }
@@ -104,13 +125,7 @@
         self.trialView4.layer.borderWidth = 3.0f;
         self.trialView5.layer.borderWidth = 3.0f;
         self.trialView6.layer.borderWidth = 3.0f;
-        
-        self.trialView1.layer.borderColor = [UIColor whiteColor].CGColor;
-        self.trialView2.layer.borderColor = [UIColor whiteColor].CGColor;
-        self.trialView3.layer.borderColor = [UIColor whiteColor].CGColor;
-        self.trialView4.layer.borderColor = [UIColor whiteColor].CGColor;
-        self.trialView5.layer.borderColor = [UIColor whiteColor].CGColor;
-        self.trialView6.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.changeSliderTintButton.layer.borderWidth = 3.0f;
         
         self.borderOn = YES;
     }
@@ -124,13 +139,6 @@
     self.trialView4.layer.cornerRadius = self.trialView4.frame.size.width;
     self.trialView5.layer.cornerRadius = self.trialView5.frame.size.width;
     self.trialView6.layer.cornerRadius = self.trialView6.frame.size.width;
-    
-    self.trialView1.clipsToBounds = YES;
-    self.trialView2.clipsToBounds = YES;
-    self.trialView3.clipsToBounds = YES;
-    self.trialView4.clipsToBounds = YES;
-    self.trialView5.clipsToBounds = YES;
-    self.trialView6.clipsToBounds = YES;
 }
 
 - (IBAction)trialButton4Tapped:(id)sender
@@ -141,13 +149,6 @@
     self.trialView4.layer.cornerRadius = self.trialView4.frame.size.height;
     self.trialView5.layer.cornerRadius = self.trialView5.frame.size.height;
     self.trialView6.layer.cornerRadius = self.trialView6.frame.size.height;
-    
-    self.trialView1.clipsToBounds = YES;
-    self.trialView2.clipsToBounds = YES;
-    self.trialView3.clipsToBounds = YES;
-    self.trialView4.clipsToBounds = YES;
-    self.trialView5.clipsToBounds = YES;
-    self.trialView6.clipsToBounds = YES;
 }
 
 - (IBAction)trialButton5Tapped:(id)sender
@@ -158,13 +159,6 @@
     self.trialView4.layer.cornerRadius = self.trialView4.frame.size.height/2;
     self.trialView5.layer.cornerRadius = self.trialView5.frame.size.height/2;
     self.trialView6.layer.cornerRadius = self.trialView6.frame.size.height/2;
-    
-    self.trialView1.clipsToBounds = YES;
-    self.trialView2.clipsToBounds = YES;
-    self.trialView3.clipsToBounds = YES;
-    self.trialView4.clipsToBounds = YES;
-    self.trialView5.clipsToBounds = YES;
-    self.trialView6.clipsToBounds = YES;
 }
 
 - (IBAction)trialButton6Tapped:(id)sender
@@ -175,13 +169,6 @@
     self.trialView4.layer.cornerRadius = self.trialView4.frame.size.width/2;
     self.trialView5.layer.cornerRadius = self.trialView5.frame.size.width/2;
     self.trialView6.layer.cornerRadius = self.trialView6.frame.size.width/2;
-    
-    self.trialView1.clipsToBounds = YES;
-    self.trialView2.clipsToBounds = YES;
-    self.trialView3.clipsToBounds = YES;
-    self.trialView4.clipsToBounds = YES;
-    self.trialView5.clipsToBounds = YES;
-    self.trialView6.clipsToBounds = YES;
 }
 
 @end
