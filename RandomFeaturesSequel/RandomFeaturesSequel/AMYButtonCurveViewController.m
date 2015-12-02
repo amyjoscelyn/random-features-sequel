@@ -13,6 +13,13 @@
 @property (weak, nonatomic) IBOutlet UISlider *curveSliderValue;
 @property (weak, nonatomic) IBOutlet UIButton *changeSliderTintButton;
 
+@property (weak, nonatomic) IBOutlet UIView *trialView1;
+@property (weak, nonatomic) IBOutlet UIView *trialView2;
+@property (weak, nonatomic) IBOutlet UIView *trialView3;
+@property (weak, nonatomic) IBOutlet UIView *trialView4;
+@property (weak, nonatomic) IBOutlet UIView *trialView5;
+@property (weak, nonatomic) IBOutlet UIView *trialView6;
+
 @property (nonatomic) NSUInteger currentI;
 
 @end
@@ -45,7 +52,16 @@
     {
         i = arc4random_uniform((int)tintColors.count);
     }
-    self.curveSliderValue.tintColor = tintColors[i];
+    UIColor *chosenColor = tintColors[i];
+    self.curveSliderValue.tintColor = chosenColor;
+    
+    self.trialView1.backgroundColor = chosenColor;
+    self.trialView2.backgroundColor = chosenColor;
+    self.trialView3.backgroundColor = chosenColor;
+    self.trialView4.backgroundColor = chosenColor;
+    self.trialView5.backgroundColor = chosenColor;
+    self.trialView6.backgroundColor = chosenColor;
+    
     self.currentI = i;
 }
 
@@ -54,5 +70,7 @@
     NSLog(@"slider value: %f", sender.value);
     self.changeSliderTintButton.layer.cornerRadius = sender.value * 10;
 }
+
+
 
 @end

@@ -22,6 +22,11 @@
 
     self.colorGoalView.backgroundColor = [UIColor yellowColor];
     self.view.backgroundColor = [UIColor blackColor];
+    
+    self.colorGoalView.layer.cornerRadius = self.colorGoalView.frame.size.height;
+    self.colorGoalView.clipsToBounds = YES;
+    
+    
 }
 
 @end
