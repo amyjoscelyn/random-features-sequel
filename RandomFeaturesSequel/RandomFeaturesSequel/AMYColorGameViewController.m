@@ -25,8 +25,10 @@
     
     self.colorGoalView.layer.cornerRadius = self.colorGoalView.frame.size.height;
     self.colorGoalView.clipsToBounds = YES;
-    
-    
 }
+
+/*
+ What I would like to do in here is 
+ */
 
 @end

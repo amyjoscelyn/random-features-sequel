@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D7F326C1C0F90D200B7995E /* AMYColorGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F326B1C0F90D200B7995E /* AMYColorGameViewController.m */; };
+		3D7F326F1C0FA69600B7995E /* AMYShapesAndBordersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F326E1C0FA69600B7995E /* AMYShapesAndBordersViewController.m */; };
 		3DC0A3AB1C063E210041CA74 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC0A3AA1C063E210041CA74 /* main.m */; };
 		3DC0A3AE1C063E210041CA74 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC0A3AD1C063E210041CA74 /* AppDelegate.m */; };
 		3DC0A3B41C063E210041CA74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DC0A3B21C063E210041CA74 /* Main.storyboard */; };
@@ -41,6 +42,8 @@
 /* Begin PBXFileReference section */
 		3D7F326A1C0F90D200B7995E /* AMYColorGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMYColorGameViewController.h; sourceTree = "<group>"; };
 		3D7F326B1C0F90D200B7995E /* AMYColorGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMYColorGameViewController.m; sourceTree = "<group>"; };
+		3D7F326D1C0FA69600B7995E /* AMYShapesAndBordersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMYShapesAndBordersViewController.h; sourceTree = "<group>"; };
+		3D7F326E1C0FA69600B7995E /* AMYShapesAndBordersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMYShapesAndBordersViewController.m; sourceTree = "<group>"; };
 		3DC0A3A61C063E210041CA74 /* RandomFeaturesSequel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomFeaturesSequel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC0A3AA1C063E210041CA74 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3DC0A3AC1C063E210041CA74 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 				3DF769101C0BD05F006B94FC /* AMYButtonCurveViewController.m */,
 				3D7F326A1C0F90D200B7995E /* AMYColorGameViewController.h */,
 				3D7F326B1C0F90D200B7995E /* AMYColorGameViewController.m */,
+				3D7F326D1C0FA69600B7995E /* AMYShapesAndBordersViewController.h */,
+				3D7F326E1C0FA69600B7995E /* AMYShapesAndBordersViewController.m */,
 				3DC0A3B51C063E210041CA74 /* Assets.xcassets */,
 				3DC0A3B71C063E210041CA74 /* LaunchScreen.storyboard */,
 				3DC0A3BA1C063E210041CA74 /* Info.plist */,
@@ -294,6 +299,7 @@
 				3DC0A3DE1C0640EF0041CA74 /* AMYGradientChooserViewController.m in Sources */,
 				3DC0A3E41C0641410041CA74 /* AMYBottomColorChooserViewController.m in Sources */,
 				3D7F326C1C0F90D200B7995E /* AMYColorGameViewController.m in Sources */,
+				3D7F326F1C0FA69600B7995E /* AMYShapesAndBordersViewController.m in Sources */,
 				3DC0A3AE1C063E210041CA74 /* AppDelegate.m in Sources */,
 				3DF769111C0BD05F006B94FC /* AMYButtonCurveViewController.m in Sources */,
 				3DC0A3AB1C063E210041CA74 /* main.m in Sources */,
