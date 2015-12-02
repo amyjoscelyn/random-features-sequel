@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.borderOn = NO;
 }
 
 //whoa! .tintColor changes ALL of the tints on the current view!! (when you've changed UIView.tintColor)
@@ -74,30 +75,44 @@
 
 - (IBAction)trialButton1Tapped:(id)sender
 {
-    //revert to original shape
+    self.trialView1.layer.cornerRadius = 0;
+    self.trialView2.layer.cornerRadius = 0;
+    self.trialView3.layer.cornerRadius = 0;
+    self.trialView4.layer.cornerRadius = 0;
+    self.trialView5.layer.cornerRadius = 0;
+    self.trialView6.layer.cornerRadius = 0;
 }
 
 - (IBAction)trialButton2Tapped:(id)sender
 {
     if (self.borderOn)
     {
-        //turn off borders
+        self.trialView1.layer.borderWidth = 0.0f;
+        self.trialView2.layer.borderWidth = 0.0f;
+        self.trialView3.layer.borderWidth = 0.0f;
+        self.trialView4.layer.borderWidth = 0.0f;
+        self.trialView5.layer.borderWidth = 0.0f;
+        self.trialView6.layer.borderWidth = 0.0f;
+        
+        self.borderOn = NO;
     }
     else
     {
-    self.trialView1.layer.borderWidth = 3.0f;
-    self.trialView2.layer.borderWidth = 3.0f;
-    self.trialView3.layer.borderWidth = 3.0f;
-    self.trialView4.layer.borderWidth = 3.0f;
-    self.trialView5.layer.borderWidth = 3.0f;
-    self.trialView6.layer.borderWidth = 3.0f;
-    
-    self.trialView1.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.trialView2.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.trialView3.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.trialView4.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.trialView5.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.trialView6.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.trialView1.layer.borderWidth = 3.0f;
+        self.trialView2.layer.borderWidth = 3.0f;
+        self.trialView3.layer.borderWidth = 3.0f;
+        self.trialView4.layer.borderWidth = 3.0f;
+        self.trialView5.layer.borderWidth = 3.0f;
+        self.trialView6.layer.borderWidth = 3.0f;
+        
+        self.trialView1.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.trialView2.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.trialView3.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.trialView4.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.trialView5.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.trialView6.layer.borderColor = [UIColor whiteColor].CGColor;
+        
+        self.borderOn = YES;
     }
 }
 
