@@ -11,6 +11,7 @@
 @interface AMYColorGameViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *colorGoalView;
+@property (weak, nonatomic) IBOutlet UILabel *gameLabel;
 
 @property (nonatomic) NSUInteger numberOfTimesRedButtonTapped;
 @property (nonatomic) NSUInteger numberOfTimesGreenButtonTapped;
@@ -35,6 +36,7 @@
     [super viewDidLoad];
 
     self.colorGoalView.backgroundColor = [UIColor yellowColor];
+    self.gameLabel.backgroundColor = [UIColor yellowColor];
     self.view.backgroundColor = [UIColor blackColor];
     
     self.colorGoalView.layer.cornerRadius = self.colorGoalView.frame.size.height/2;
@@ -76,7 +78,7 @@
     
     NSLog(@"Tapped Red: %lu, %.2f", self.numberOfTimesRedButtonTapped, self.colorWithRedFloat);
     
-    [self changeBackgroundColor];
+    [self postButtonActions];
 }
 
 - (IBAction)makeBackgroundLessRedButtonTapped:(UIButton *)sender
@@ -92,7 +94,7 @@
     
     NSLog(@"Tapped Red: %lu, %.2f", self.numberOfTimesRedButtonTapped,self.colorWithRedFloat);
     
-    [self changeBackgroundColor];
+    [self postButtonActions];
 }
 
 - (IBAction)makeBackgroundMoreGreenButtonTapped:(UIButton *)sender
@@ -108,7 +110,7 @@
     
     NSLog(@"Tapped Green: %lu, %.2f", self.numberOfTimesGreenButtonTapped, self.colorWithGreenFloat);
     
-    [self changeBackgroundColor];
+    [self postButtonActions];
 }
 
 - (IBAction)makeBackgroundLessGreenButtonTapped:(UIButton *)sender
@@ -124,7 +126,7 @@
     
     NSLog(@"Tapped Green: %lu, %.2f", self.numberOfTimesGreenButtonTapped, self.colorWithGreenFloat);
     
-    [self changeBackgroundColor];
+    [self postButtonActions];
 }
 
 - (IBAction)makeBackgroundMoreBlueButtonTapped:(UIButton *)sender
@@ -140,7 +142,7 @@
     
     NSLog(@"Tapped Blue: %lu, %.2f", self.numberOfTimesBlueButtonTapped, self.colorWithBlueFloat);
     
-    [self changeBackgroundColor];
+    [self postButtonActions];
 }
 
 - (IBAction)makeBackgroundLessBlueButtonTapped:(UIButton *)sender
@@ -156,7 +158,7 @@
     
     NSLog(@"Tapped Blue: %lu, %.2f", self.numberOfTimesBlueButtonTapped, self.colorWithBlueFloat);
     
-    [self changeBackgroundColor];
+    [self postButtonActions];
 }
 
 - (IBAction)addAlphaToBackgroundButtonTapped:(UIButton *)sender
@@ -172,7 +174,7 @@
     
     NSLog(@"Tapped Alpha: %lu, %.2f", self.numberOfTimesAlphaButtonTapped, self.alphaFloat);
     
-    [self changeBackgroundColor];
+    [self postButtonActions];
 }
 
 - (IBAction)takeAwayAlphaFromBackgroundButtonTapped:(UIButton *)sender
@@ -188,10 +190,22 @@
     
     NSLog(@"Tapped Alpha: %lu, %.2f", self.numberOfTimesAlphaButtonTapped, self.alphaFloat);
     
-    [self changeBackgroundColor];
+    [self postButtonActions];
 }
 
+- (void)postButtonActions
+{
+    [self changeBackgroundColor];
+    [self winningConditions];
+}
 
+- (void)winningConditions
+{
+    if ([self.view.backgroundColor isEqual:self.colorGoalView.backgroundColor])
+    {
+        self.gameLabel.text = @"Winner!";
+    }
+}
 
 /*
  What I would like to do in here is give the user a color, and they have to try and match it with the background.  They have eight buttons, for RGBA values up and down, and through that they can make all of the colors they are randomly given.
