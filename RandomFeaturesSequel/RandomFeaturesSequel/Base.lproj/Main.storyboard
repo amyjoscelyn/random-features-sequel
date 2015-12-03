@@ -1203,12 +1203,158 @@
                                     <constraint firstAttribute="height" constant="100" id="a07-Pz-OmL"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rZt-yR-8jY">
+                                <rect key="frame" x="0.0" y="220" width="320" height="284"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="rrz-sh-8S5">
+                                        <rect key="frame" x="45" y="0.0" width="230" height="56"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2H9-tH-9mS">
+                                                <rect key="frame" x="0.0" y="13" width="95" height="30"/>
+                                                <animations/>
+                                                <color key="backgroundColor" red="0.39215686274509803" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="   Less Red!   ">
+                                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="makeBackgroundLessRedButtonTapped:" destination="HPg-Wc-ckM" eventType="touchUpInside" id="ij0-en-dOe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3o5-Xv-fk8">
+                                                <rect key="frame" x="135" y="13" width="95" height="30"/>
+                                                <animations/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="   More Red!   ">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="makeBackgroundMoreRedButtonTapped:" destination="HPg-Wc-ckM" eventType="touchUpInside" id="ZOn-I4-xaw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="5DN-hL-IP8">
+                                        <rect key="frame" x="31" y="76" width="258" height="56"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvW-MM-UEV">
+                                                <rect key="frame" x="0.0" y="13" width="109" height="30"/>
+                                                <animations/>
+                                                <color key="backgroundColor" red="0.0" green="0.39215686274509803" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="   Less Green!   ">
+                                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="makeBackgroundLessGreenButtonTapped:" destination="HPg-Wc-ckM" eventType="touchUpInside" id="dwl-ou-yiV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtu-TA-VO8">
+                                                <rect key="frame" x="149" y="13" width="109" height="30"/>
+                                                <animations/>
+                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="   More Green!   ">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="makeBackgroundMoreGreenButtonTapped:" destination="HPg-Wc-ckM" eventType="touchUpInside" id="Zn4-w2-yY8"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="7Tu-gI-df6">
+                                        <rect key="frame" x="42" y="152" width="236" height="56"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KkY-y9-gjC">
+                                                <rect key="frame" x="0.0" y="13" width="98" height="30"/>
+                                                <animations/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="   Less Blue!   ">
+                                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="makeBackgroundLessBlueButtonTapped:" destination="HPg-Wc-ckM" eventType="touchUpInside" id="wrO-CF-iZf"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sld-53-0uL">
+                                                <rect key="frame" x="138" y="13" width="98" height="30"/>
+                                                <animations/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="   More Blue!   ">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="makeBackgroundMoreBlueButtonTapped:" destination="HPg-Wc-ckM" eventType="touchUpInside" id="rhd-yV-QDc"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="psa-Pt-sd9">
+                                        <rect key="frame" x="63" y="228" width="194" height="56"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zkt-hp-pQJ">
+                                                <rect key="frame" x="0.0" y="13" width="77" height="30"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="   Lighter!   ">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addAlphaToBackgroundButtonTapped:" destination="HPg-Wc-ckM" eventType="touchUpInside" id="yUx-to-Slp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tab-Ji-0jB">
+                                                <rect key="frame" x="117" y="13" width="77" height="30"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="   Darker!   ">
+                                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="takeAwayAlphaFromBackgroundButtonTapped:" destination="HPg-Wc-ckM" eventType="touchUpInside" id="vco-c5-8WM"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                            </stackView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cdq-UL-D8a" firstAttribute="top" secondItem="7Iu-g8-8Id" secondAttribute="bottom" constant="30" id="6de-MS-U9F"/>
                             <constraint firstItem="cdq-UL-D8a" firstAttribute="centerX" secondItem="har-Uh-XMl" secondAttribute="centerX" id="PA3-fU-BUZ"/>
+                            <constraint firstItem="rZt-yR-8jY" firstAttribute="height" secondItem="har-Uh-XMl" secondAttribute="height" multiplier="0.5" id="YzE-0v-QvF"/>
+                            <constraint firstItem="rZt-yR-8jY" firstAttribute="centerX" secondItem="har-Uh-XMl" secondAttribute="centerX" id="osv-H0-jhe"/>
+                            <constraint firstItem="rZt-yR-8jY" firstAttribute="width" secondItem="har-Uh-XMl" secondAttribute="width" id="wsO-Sl-3Mz"/>
+                            <constraint firstItem="rZt-yR-8jY" firstAttribute="top" secondItem="7Iu-g8-8Id" secondAttribute="bottom" constant="200" id="xi8-To-b9c"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Game" id="YKY-Kf-xvJ"/>
