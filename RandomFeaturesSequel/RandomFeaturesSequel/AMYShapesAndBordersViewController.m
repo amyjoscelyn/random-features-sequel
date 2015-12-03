@@ -48,7 +48,8 @@
     self.heightStepper.maximumValue = self.clearCornersButton.frame.size.height;
     
     self.borderFrameStepper.minimumValue = 0;
-    self.borderFrameStepper.maximumValue = 16;
+    self.borderFrameStepper.maximumValue = 8;
+    self.borderFrameStepper.stepValue = 0.5;
     
     self.borderColorStepper.minimumValue = 0;
     self.borderColorStepper.maximumValue = self.colorsArray.count - 1;
@@ -111,8 +112,8 @@
     for (UIButton *button in self.buttonsToChange)
     {
         button.layer.cornerRadius = button.frame.size.width/i;
+        button.layer.masksToBounds = YES;
     }
-    NSLog(@"stepper value: %f, increment: %f, max: %f", self.widthStepper.value, i, self.clearCornersButton.frame.size.width);
 }
 
 - (IBAction)heightStepperValueChanged:(UIStepper *)sender
@@ -123,6 +124,7 @@
     for (UIButton *button in self.buttonsToChange)
     {
         button.layer.cornerRadius = button.frame.size.height/i;
+        button.layer.masksToBounds = YES;
     }
 }
 
@@ -131,6 +133,7 @@
     for (UIButton *button in self.buttonsToChange)
     {
         button.layer.cornerRadius = 0;
+        button.layer.masksToBounds = NO;
     }
 }
 
@@ -141,6 +144,10 @@
     for (UIButton *button in self.buttonsToChange)
     {
         button.layer.borderWidth = i;
+    }
+    for (UIStepper *stepper in self.steppersToChange)
+    {
+        stepper.layer.borderWidth = i;
     }
 }
 
@@ -157,6 +164,7 @@
     for (UIStepper *stepper in self.steppersToChange)
     {
         stepper.tintColor = color;
+        stepper.layer.borderColor = color.CGColor;
     }
 }
 
@@ -169,12 +177,13 @@
     for (UIStepper *stepper in self.steppersToChange)
     {
         stepper.tintColor = nil;
+        stepper.layer.borderWidth = 0;
     }
 }
 
 - (IBAction)shadowSizeStepperValueChanged:(UIStepper *)sender
 {
-    
+    //shadows might require another view
 }
 
 - (IBAction)shadowColorStepperValueChanged:(UIStepper *)sender
