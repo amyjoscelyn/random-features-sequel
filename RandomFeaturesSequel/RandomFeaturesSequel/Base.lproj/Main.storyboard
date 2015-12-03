@@ -1084,11 +1084,99 @@
                     <view key="view" contentMode="scaleToFill" id="IzA-2I-2yp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="EJS-yK-ITT">
+                                <rect key="frame" x="26" y="84" width="94" height="29"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="widthStepperValueChanged:" destination="vPU-Gd-rNu" eventType="valueChanged" id="5ss-UI-7zs"/>
+                                </connections>
+                            </stepper>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="ly4-zD-sWM">
+                                <rect key="frame" x="133" y="84" width="94" height="29"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="heightStepperValueChanged:" destination="vPU-Gd-rNu" eventType="valueChanged" id="ksP-tz-MFV"/>
+                                </connections>
+                            </stepper>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="k0t-Si-sAN">
+                                <rect key="frame" x="26" y="182" width="94" height="29"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="borderFrameStepperValueChanged:" destination="vPU-Gd-rNu" eventType="valueChanged" id="SGg-MF-tov"/>
+                                </connections>
+                            </stepper>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rt8-NJ-5tc">
+                                <rect key="frame" x="133" y="182" width="94" height="29"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="borderColorStepperValueChanged:" destination="vPU-Gd-rNu" eventType="valueChanged" id="hJs-dz-pZ4"/>
+                                </connections>
+                            </stepper>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWi-wg-1LA">
+                                <rect key="frame" x="247" y="171" width="51" height="51"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="noBorderButtonTapped:" destination="vPU-Gd-rNu" eventType="touchUpInside" id="mwJ-Gn-lUH"/>
+                                </connections>
+                            </button>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Yoq-dY-lN4">
+                                <rect key="frame" x="133" y="269" width="94" height="29"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="shadowColorStepperValueChanged:" destination="vPU-Gd-rNu" eventType="valueChanged" id="pYR-ZF-qky"/>
+                                </connections>
+                            </stepper>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vAm-Kv-JO7">
+                                <rect key="frame" x="26" y="269" width="94" height="29"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="shadowSizeStepperValueChanged:" destination="vPU-Gd-rNu" eventType="valueChanged" id="dgc-37-X7c"/>
+                                </connections>
+                            </stepper>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azn-Ku-X1b">
+                                <rect key="frame" x="236" y="73" width="73" height="51"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Revert"/>
+                                <connections>
+                                    <action selector="clearCornersButtonTapped:" destination="vPU-Gd-rNu" eventType="touchUpInside" id="D7r-l7-Yam"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ap9-LA-tt6">
+                                <rect key="frame" x="247" y="247" width="51" height="73"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Bright"/>
+                                <connections>
+                                    <action selector="noShadowButtonTapped:" destination="vPU-Gd-rNu" eventType="touchUpInside" id="Yne-E5-0lb"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Shapes" id="AdG-Gl-MEr"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="borderColorStepper" destination="Rt8-NJ-5tc" id="eV9-pw-fwV"/>
+                        <outlet property="borderFrameStepper" destination="k0t-Si-sAN" id="7Po-Xl-2tn"/>
+                        <outlet property="clearCornersButton" destination="azn-Ku-X1b" id="dGt-ga-SGJ"/>
+                        <outlet property="heightStepper" destination="ly4-zD-sWM" id="XdD-N3-nJI"/>
+                        <outlet property="noBorderButton" destination="tWi-wg-1LA" id="3gR-xH-8ps"/>
+                        <outlet property="noShadowButton" destination="ap9-LA-tt6" id="j2L-MY-tt5"/>
+                        <outlet property="shadowColorStepper" destination="Yoq-dY-lN4" id="ABX-vD-sen"/>
+                        <outlet property="shadowSizeStepper" destination="vAm-Kv-JO7" id="LdO-qJ-muE"/>
+                        <outlet property="widthStepper" destination="EJS-yK-ITT" id="daW-Si-x6J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKp-Ke-tYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
