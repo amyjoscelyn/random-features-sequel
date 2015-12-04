@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *colorGoalView;
 @property (weak, nonatomic) IBOutlet UILabel *gameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *refreshGameButton;
 
 @property (nonatomic) NSUInteger numberOfTimesRedButtonTapped;
 @property (nonatomic) NSUInteger numberOfTimesGreenButtonTapped;
@@ -27,6 +28,8 @@
 @property (nonatomic) NSUInteger tapCapMin;
 @property (nonatomic) CGFloat multiplier;
 
+@property (nonatomic, strong) NSArray *easyColors;
+
 @end
 
 @implementation AMYColorGameViewController
@@ -34,22 +37,58 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.colorGoalView.backgroundColor = [UIColor yellowColor];
-    self.gameLabel.backgroundColor = [UIColor yellowColor];
-    self.view.backgroundColor = [UIColor blackColor];
+    
+    [self setGoalColors];
+    
+    //this can always go into another method, one that lets you pick your difficulty, and adjusts the array used based on your choice
+    NSUInteger i = arc4random_uniform((int)self.easyColors.count);
+    UIColor *goalColor = self.easyColors[i];
+    [self setUpGameWithGoalColor:goalColor];
     
     self.colorGoalView.layer.cornerRadius = self.colorGoalView.frame.size.height/2;
     self.colorGoalView.clipsToBounds = YES;
+}
+
+- (void)setGoalColors
+{
+    UIColor *red = [UIColor redColor];
+    UIColor *orange = [UIColor orangeColor];
+    UIColor *yellow = [UIColor yellowColor];
+    UIColor *green = [UIColor greenColor];
+    UIColor *blue = [UIColor blueColor];
+    UIColor *purple = [UIColor purpleColor];
+    UIColor *brown = [UIColor brownColor];
+    UIColor *white = [UIColor whiteColor];
     
+    self.easyColors = @[ red, orange, yellow, green, blue, purple, brown, white ];
+}
+
+- (void)chooseGoalColor //WithDifficulty:(NSString *)difficulty
+{
+    NSUInteger i = arc4random_uniform((int)self.easyColors.count);
+    [self setUpGameWithGoalColor:self.easyColors[i]];
+}
+
+- (void)setUpGameWithGoalColor:(UIColor *)color
+{
+    self.colorGoalView.backgroundColor = color;
+    self.gameLabel.backgroundColor = color;
+    self.refreshGameButton.hidden = YES;
+    self.view.backgroundColor = [UIColor blackColor];
+    self.gameLabel.text = @"Match the color!";
+    [self setUpView];
+}
+
+- (void)setUpView
+{
     self.multiplier = 0.05;
     
-    CGFloat x = 1 / self.multiplier;
+    CGFloat x = 1 / self.multiplier; //does this change based on difficulty?
     
     self.colorWithRedFloat = 0.0;
     self.colorWithGreenFloat = 0.0;
     self.colorWithBlueFloat = 0.0;
-    self.alphaFloat = 0.5;
+    self.alphaFloat = 0.5; //this should probably be 0 for easy
     
     self.numberOfTimesRedButtonTapped = self.colorWithRedFloat;
     self.numberOfTimesGreenButtonTapped = self.colorWithGreenFloat;
@@ -204,7 +243,13 @@
     if ([self.view.backgroundColor isEqual:self.colorGoalView.backgroundColor])
     {
         self.gameLabel.text = @"Winner!";
+        self.refreshGameButton.hidden = NO;
     }
+}
+
+- (IBAction)refreshGameButtonTapped:(id)sender
+{
+    [self chooseGoalColor];
 }
 
 /*
@@ -221,6 +266,8 @@
  Throughout it all, the user should have a few options: whether to hide or to show the RGBA value of the goal color, whether to show the values of the current color, and if the colors should be named or just shown (through the colors).  I don't know.  It should be fun.
  
  A different array of goal colors would be supplied based on each difficulty.
+ 
+ Oooh!!  It should keep track of how many taps you've used to find that color--that should be your score!  (That can be another option to show or hide; do you want to see your score or do it zen?  Do you want to know what the par is--the absolute fewest amount of taps it could take?  Or do you want that hidden too, and learn for yourself how low you can go?)
  */
 
 @end
