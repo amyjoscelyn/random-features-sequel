@@ -1198,9 +1198,9 @@
                                 <rect key="frame" x="110" y="50" width="100" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3Q-gr-Rp0">
-                                        <rect key="frame" x="12" y="35" width="76" height="30"/>
+                                        <rect key="frame" x="4" y="35" width="92" height="30"/>
                                         <animations/>
-                                        <state key="normal" title="New Color!"/>
+                                        <state key="normal" title="  New Color!  "/>
                                         <connections>
                                             <action selector="refreshGameButtonTapped:" destination="HPg-Wc-ckM" eventType="touchUpInside" id="YIM-zx-3Xd"/>
                                         </connections>
@@ -1459,6 +1459,14 @@
                         <outlet property="gameLabel" destination="HdO-62-8uQ" id="LPd-Uz-2CY"/>
                         <outlet property="greenBackgroundValueLabel" destination="Uay-D8-5Uf" id="qI3-Mq-K1O"/>
                         <outlet property="greenGoalValueLabel" destination="46y-p7-eqi" id="bBB-bK-YBg"/>
+                        <outlet property="lessAlphaButton" destination="Tab-Ji-0jB" id="jDO-vW-kbL"/>
+                        <outlet property="lessBlueButton" destination="KkY-y9-gjC" id="6jG-wa-zdW"/>
+                        <outlet property="lessGreenButton" destination="tvW-MM-UEV" id="MgK-Mi-LlU"/>
+                        <outlet property="lessRedButton" destination="2H9-tH-9mS" id="5gy-E3-jso"/>
+                        <outlet property="moreAlphaButton" destination="Zkt-hp-pQJ" id="4XC-am-C5R"/>
+                        <outlet property="moreBlueButton" destination="Sld-53-0uL" id="Lje-29-11F"/>
+                        <outlet property="moreGreenButton" destination="rtu-TA-VO8" id="Req-5A-wIP"/>
+                        <outlet property="moreRedButton" destination="3o5-Xv-fk8" id="uAL-Mn-tLe"/>
                         <outlet property="redBackgroundValueLabel" destination="9Zi-kz-Di4" id="kIo-8z-0PF"/>
                         <outlet property="redGoalValueLabel" destination="SvC-nU-aWt" id="u9q-MT-Yfr"/>
                         <outlet property="refreshGameButton" destination="r3Q-gr-Rp0" id="rKp-y9-PcU"/>
