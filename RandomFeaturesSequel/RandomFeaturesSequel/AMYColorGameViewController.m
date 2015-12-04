@@ -14,6 +14,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *gameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *refreshGameButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *redGoalValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *greenGoalValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *blueGoalValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *alphaGoalValueLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *redBackgroundValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *greenBackgroundValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *blueBackgroundValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *alphaBackgroundValueLabel;
+
 @property (nonatomic) NSUInteger numberOfTimesRedButtonTapped;
 @property (nonatomic) NSUInteger numberOfTimesGreenButtonTapped;
 @property (nonatomic) NSUInteger numberOfTimesBlueButtonTapped;
@@ -57,10 +67,10 @@
     UIColor *green = [UIColor greenColor];
     UIColor *blue = [UIColor blueColor];
     UIColor *purple = [UIColor purpleColor];
-    UIColor *brown = [UIColor brownColor];
-    UIColor *white = [UIColor whiteColor];
+    UIColor *brown = [UIColor brownColor]; //doesn't match fsr
+//    UIColor *white = [UIColor whiteColor];
     
-    self.easyColors = @[ red, orange, yellow, green, blue, purple, brown, white ];
+    self.easyColors = @[ red, orange, yellow, green, blue, purple, brown ];
 }
 
 - (void)chooseGoalColor //WithDifficulty:(NSString *)difficulty
@@ -73,6 +83,27 @@
 {
     self.colorGoalView.backgroundColor = color;
     self.gameLabel.backgroundColor = color;
+    
+    NSArray *colorValueLabels = @[ self.redGoalValueLabel, self.greenGoalValueLabel, self.blueGoalValueLabel, self.alphaGoalValueLabel, self.redBackgroundValueLabel, self.greenBackgroundValueLabel, self.blueBackgroundValueLabel, self.alphaBackgroundValueLabel ];
+    
+    for (UILabel *colorValueLabel in colorValueLabels)
+    {
+        colorValueLabel.backgroundColor = color;
+        [colorValueLabel setTextColor:[UIColor lightTextColor]];
+    }
+    
+    CGFloat red, green, blue, alpha;
+    
+    [color getRed: &red
+               green: &green
+                blue: &blue
+               alpha: &alpha];
+    self.redGoalValueLabel.text = [NSString stringWithFormat:@"R: %.3f", red];
+    self.greenGoalValueLabel.text = [NSString stringWithFormat:@"G: %.3f", green];
+    self.blueGoalValueLabel.text = [NSString stringWithFormat:@"B: %.3f", blue];
+    self.alphaGoalValueLabel.text = [NSString stringWithFormat:@"A: %.3f", alpha];
+    
+    [self.refreshGameButton setTitleColor:[UIColor lightTextColor] forState:UIControlStateNormal];
     self.refreshGameButton.hidden = YES;
     self.view.backgroundColor = [UIColor blackColor];
     self.gameLabel.text = @"Match the color!";
@@ -234,6 +265,19 @@
 
 - (void)postButtonActions
 {
+    CGFloat redBG, greenBG, blueBG, alphaBG;
+    
+    [self.view.backgroundColor getRed: &redBG
+                                green: &greenBG
+                                 blue: &blueBG
+                                alpha: &alphaBG];
+    self.redBackgroundValueLabel.text = [NSString stringWithFormat:@"R: %.3f", redBG];
+    self.greenBackgroundValueLabel.text = [NSString stringWithFormat:@"G: %.3f", greenBG];
+    self.blueBackgroundValueLabel.text = [NSString stringWithFormat:@"B: %.3f", blueBG];
+    self.alphaBackgroundValueLabel.text = [NSString stringWithFormat:@"A: %.3f", alphaBG];
+    //not counting properly fsr
+    
+    
     [self changeBackgroundColor];
     [self winningConditions];
 }
