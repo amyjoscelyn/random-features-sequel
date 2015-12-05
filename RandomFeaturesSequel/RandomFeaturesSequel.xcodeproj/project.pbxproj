@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D3176A41C1290530022C1DB /* AMYTestingColorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3176A31C1290530022C1DB /* AMYTestingColorsViewController.m */; };
 		3D7F326C1C0F90D200B7995E /* AMYColorGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F326B1C0F90D200B7995E /* AMYColorGameViewController.m */; };
 		3D7F326F1C0FA69600B7995E /* AMYShapesAndBordersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F326E1C0FA69600B7995E /* AMYShapesAndBordersViewController.m */; };
 		3DC0A3AB1C063E210041CA74 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC0A3AA1C063E210041CA74 /* main.m */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D3176A21C1290530022C1DB /* AMYTestingColorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMYTestingColorsViewController.h; sourceTree = "<group>"; };
+		3D3176A31C1290530022C1DB /* AMYTestingColorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMYTestingColorsViewController.m; sourceTree = "<group>"; };
 		3D7F326A1C0F90D200B7995E /* AMYColorGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMYColorGameViewController.h; sourceTree = "<group>"; };
 		3D7F326B1C0F90D200B7995E /* AMYColorGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMYColorGameViewController.m; sourceTree = "<group>"; };
 		3D7F326D1C0FA69600B7995E /* AMYShapesAndBordersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMYShapesAndBordersViewController.h; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 				3D7F326B1C0F90D200B7995E /* AMYColorGameViewController.m */,
 				3D7F326D1C0FA69600B7995E /* AMYShapesAndBordersViewController.h */,
 				3D7F326E1C0FA69600B7995E /* AMYShapesAndBordersViewController.m */,
+				3D3176A21C1290530022C1DB /* AMYTestingColorsViewController.h */,
+				3D3176A31C1290530022C1DB /* AMYTestingColorsViewController.m */,
 				3DC0A3B51C063E210041CA74 /* Assets.xcassets */,
 				3DC0A3B71C063E210041CA74 /* LaunchScreen.storyboard */,
 				3DC0A3BA1C063E210041CA74 /* Info.plist */,
@@ -296,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DC0A3E11C06412F0041CA74 /* AMYTopColorChooserViewController.m in Sources */,
+				3D3176A41C1290530022C1DB /* AMYTestingColorsViewController.m in Sources */,
 				3DC0A3DE1C0640EF0041CA74 /* AMYGradientChooserViewController.m in Sources */,
 				3DC0A3E41C0641410041CA74 /* AMYBottomColorChooserViewController.m in Sources */,
 				3D7F326C1C0F90D200B7995E /* AMYColorGameViewController.m in Sources */,

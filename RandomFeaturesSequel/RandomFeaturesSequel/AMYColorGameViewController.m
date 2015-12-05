@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *lessAlphaButton;
 @property (weak, nonatomic) IBOutlet UIButton *moreAlphaButton;
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *difficultySegmentedControl;
+
 @property (nonatomic) NSUInteger numberOfTimesRedButtonTapped;
 @property (nonatomic) NSUInteger numberOfTimesGreenButtonTapped;
 @property (nonatomic) NSUInteger numberOfTimesBlueButtonTapped;
@@ -48,8 +50,13 @@
 @property (nonatomic) CGFloat multiplier;
 
 @property (nonatomic, strong) UIColor *currentColor;
+@property (nonatomic, strong) NSString *currentDifficulty;
 
+@property (nonatomic, strong) NSArray *veryEasyColors;
 @property (nonatomic, strong) NSArray *easyColors;
+@property (nonatomic, strong) NSArray *mediumColors;
+@property (nonatomic, strong) NSArray *hardColors;
+@property (nonatomic, strong) NSArray *masterColors;
 
 @end
 
@@ -60,36 +67,100 @@
     [super viewDidLoad];
     
     [self setGoalColors];
-    [self chooseGoalColor];
 
     self.colorGoalView.layer.cornerRadius = self.colorGoalView.frame.size.height/2;
     self.colorGoalView.clipsToBounds = YES;
 }
 
-- (void)setGoalColors
+- (void)setGoalColors //WithDifficulty:(NSString *)difficulty
 {
     UIColor *red    = [UIColor redColor];
-    UIColor *orange = [UIColor orangeColor];
-    UIColor *yellow = [UIColor yellowColor];
     UIColor *green  = [UIColor greenColor];
     UIColor *blue   = [UIColor blueColor];
+    
+    self.veryEasyColors = @[ red, green, blue ];
+    
+    
+    UIColor *orange = [UIColor orangeColor];
+    UIColor *yellow = [UIColor yellowColor];
+    
+    
     UIColor *purple = [UIColor purpleColor];
-    UIColor *brown  = [UIColor brownColor]; //doesn't match fsr
+    UIColor *brown  = [UIColor brownColor];
     UIColor *white  = [UIColor whiteColor]; //text color is white
     
-    self.easyColors = @[ red, orange, yellow, green, blue, purple, brown ];
+    self.easyColors = @[ orange, yellow, purple, brown ];
     self.currentColor = white;
+    
+    
+    self.mediumColors = @[  ];
+    
+    
+    
+    self.hardColors = @[  ];
+    
+    
+    
+    self.masterColors = @[  ];
 }
 
-- (void)chooseGoalColor //WithDifficulty:(NSString *)difficulty
+- (IBAction)difficultyChosen:(UISegmentedControl *)sender
 {
+    if (sender.selectedSegmentIndex == 0)
+    {
+        [self chooseGoalColorWithDifficulty:@"very easy"];
+    }
+    else if (sender.selectedSegmentIndex == 1)
+    {
+        [self chooseGoalColorWithDifficulty:@"easy"];
+    }
+    else if (sender.selectedSegmentIndex == 2)
+    {
+        [self chooseGoalColorWithDifficulty:@"medium"];
+    }
+    else if (sender.selectedSegmentIndex == 3)
+    {
+        [self chooseGoalColorWithDifficulty:@"hard"];
+    }
+    else
+    {
+        [self chooseGoalColorWithDifficulty:@"master"];
+    }
+}
+
+- (void)chooseGoalColorWithDifficulty:(NSString *)difficulty
+{
+    NSMutableArray *colorsArray = [[NSMutableArray alloc] init];
+    
+    if ([difficulty isEqualToString:@"very easy"])
+    {
+//        colorsArray = self.very
+    }
+    else if ([difficulty isEqualToString:@"very easy"])
+    {
+        colorsArray = [self.easyColors mutableCopy];
+    }
+    else if ([difficulty isEqualToString:@"very easy"])
+    {
+        colorsArray = [self.mediumColors mutableCopy];
+    }
+    else if ([difficulty isEqualToString:@"very easy"])
+    {
+        colorsArray = [self.hardColors mutableCopy];
+    }
+    else
+    {
+        colorsArray = [self.masterColors mutableCopy];
+    }
+    
     NSUInteger i = 0;
     do
     {
-        i = arc4random_uniform((int)self.easyColors.count);
+        i = arc4random_uniform((int)colorsArray.count);
     }
     while (self.easyColors[i] == self.currentColor);
     
+    self.currentDifficulty = difficulty;
     [self setUpGameWithGoalColor:self.easyColors[i]];
 }
 
@@ -158,6 +229,17 @@
 - (void)changeBackgroundColor
 {
     self.view.backgroundColor = [UIColor colorWithRed:self.colorWithRedFloat green:self.colorWithGreenFloat blue:self.colorWithBlueFloat alpha:self.alphaFloat];
+    
+    CGFloat redBG, greenBG, blueBG, alphaBG;
+    
+    [self.view.backgroundColor getRed: &redBG
+                                green: &greenBG
+                                 blue: &blueBG
+                                alpha: &alphaBG];
+    self.redBackgroundValueLabel.text = [NSString stringWithFormat:@"R: %.3f", redBG];
+    self.greenBackgroundValueLabel.text = [NSString stringWithFormat:@"G: %.3f", greenBG];
+    self.blueBackgroundValueLabel.text = [NSString stringWithFormat:@"B: %.3f", blueBG];
+    self.alphaBackgroundValueLabel.text = [NSString stringWithFormat:@"A: %.3f", alphaBG];
 }
 
 - (IBAction)makeBackgroundMoreRedButtonTapped:(UIButton *)sender
@@ -165,7 +247,6 @@
     if (self.numberOfTimesRedButtonTapped == self.tapCapMax)
     {
         sender.enabled = NO;
-        NSLog(@"Red value can't go any higher.");
         return;
     }
     self.numberOfTimesRedButtonTapped++;
@@ -174,7 +255,7 @@
     
     self.lessRedButton.enabled = YES;
     
-    NSLog(@"Tapped Red: %lu, %.2f", self.numberOfTimesRedButtonTapped, self.colorWithRedFloat);
+//    NSLog(@"Tapped Red: %lu, %.2f", self.numberOfTimesRedButtonTapped, self.colorWithRedFloat);
     
     [self postButtonActions];
 }
@@ -184,7 +265,6 @@
     if (self.numberOfTimesRedButtonTapped == self.tapCapMin)
     {
         sender.enabled = NO;
-        NSLog(@"Red value can't go any lower.");
         return;
     }
     self.numberOfTimesRedButtonTapped--;
@@ -193,7 +273,7 @@
     
     self.moreRedButton.enabled = YES;
     
-    NSLog(@"Tapped Red: %lu, %.2f", self.numberOfTimesRedButtonTapped,self.colorWithRedFloat);
+//    NSLog(@"Tapped Red: %lu, %.2f", self.numberOfTimesRedButtonTapped,self.colorWithRedFloat);
     
     [self postButtonActions];
 }
@@ -203,7 +283,6 @@
     if (self.numberOfTimesGreenButtonTapped == self.tapCapMax)
     {
         sender.enabled = NO;
-        NSLog(@"Green value can't go any higher.");
         return;
     }
     self.numberOfTimesGreenButtonTapped++;
@@ -212,7 +291,7 @@
     
     self.lessGreenButton.enabled = YES;
     
-    NSLog(@"Tapped Green: %lu, %.2f", self.numberOfTimesGreenButtonTapped, self.colorWithGreenFloat);
+//    NSLog(@"Tapped Green: %lu, %.2f", self.numberOfTimesGreenButtonTapped, self.colorWithGreenFloat);
     
     [self postButtonActions];
 }
@@ -222,7 +301,6 @@
     if (self.numberOfTimesGreenButtonTapped == self.tapCapMin)
     {
         sender.enabled = NO;
-        NSLog(@"Green value can't go any lower.");
         return;
     }
     self.numberOfTimesGreenButtonTapped--;
@@ -231,7 +309,7 @@
     
     self.moreGreenButton.enabled = YES;
     
-    NSLog(@"Tapped Green: %lu, %.2f", self.numberOfTimesGreenButtonTapped, self.colorWithGreenFloat);
+//    NSLog(@"Tapped Green: %lu, %.2f", self.numberOfTimesGreenButtonTapped, self.colorWithGreenFloat);
     
     [self postButtonActions];
 }
@@ -241,7 +319,6 @@
     if (self.numberOfTimesBlueButtonTapped == self.tapCapMax)
     {
         sender.enabled = NO;
-        NSLog(@"Blue value can't go any higher.");
         return;
     }
     self.numberOfTimesBlueButtonTapped++;
@@ -250,7 +327,7 @@
     
     self.lessBlueButton.enabled = YES;
     
-    NSLog(@"Tapped Blue: %lu, %.2f", self.numberOfTimesBlueButtonTapped, self.colorWithBlueFloat);
+//    NSLog(@"Tapped Blue: %lu, %.2f", self.numberOfTimesBlueButtonTapped, self.colorWithBlueFloat);
     
     [self postButtonActions];
 }
@@ -260,7 +337,6 @@
     if (self.numberOfTimesBlueButtonTapped == self.tapCapMin)
     {
         sender.enabled = NO;
-        NSLog(@"Blue value can't go any lower.");
         return;
     }
     self.numberOfTimesBlueButtonTapped--;
@@ -269,7 +345,7 @@
     
     self.moreBlueButton.enabled = YES;
     
-    NSLog(@"Tapped Blue: %lu, %.2f", self.numberOfTimesBlueButtonTapped, self.colorWithBlueFloat);
+//    NSLog(@"Tapped Blue: %lu, %.2f", self.numberOfTimesBlueButtonTapped, self.colorWithBlueFloat);
     
     [self postButtonActions];
 }
@@ -279,7 +355,6 @@
     if (self.numberOfTimesAlphaButtonTapped == self.tapCapMax)
     {
         sender.enabled = NO;
-        NSLog(@"Alpha value can't go any higher.");
         return;
     }
     self.numberOfTimesAlphaButtonTapped++;
@@ -288,7 +363,7 @@
     
     self.lessAlphaButton.enabled = YES;
     
-    NSLog(@"Tapped Alpha: %lu, %.2f", self.numberOfTimesAlphaButtonTapped, self.alphaFloat);
+//    NSLog(@"Tapped Alpha: %lu, %.2f", self.numberOfTimesAlphaButtonTapped, self.alphaFloat);
     
     [self postButtonActions];
 }
@@ -298,7 +373,6 @@
     if (self.numberOfTimesAlphaButtonTapped == self.tapCapMin)
     {
         sender.enabled = NO;
-        NSLog(@"Alpha value can't go any lower.");
         return;
     }
     self.numberOfTimesAlphaButtonTapped--;
@@ -307,35 +381,45 @@
     
     self.moreAlphaButton.enabled = YES;
     
-    NSLog(@"Tapped Alpha: %lu, %.2f", self.numberOfTimesAlphaButtonTapped, self.alphaFloat);
+//    NSLog(@"Tapped Alpha: %lu, %.2f", self.numberOfTimesAlphaButtonTapped, self.alphaFloat);
     
     [self postButtonActions];
 }
 
 - (void)postButtonActions
 {
-//    CGFloat redBG, greenBG, blueBG, alphaBG;
-//    
-//    [self.view.backgroundColor getRed: &redBG
-//                                green: &greenBG
-//                                 blue: &blueBG
-//                                alpha: &alphaBG];
-//    self.redBackgroundValueLabel.text = [NSString stringWithFormat:@"R: %.3f", redBG];
-//    self.greenBackgroundValueLabel.text = [NSString stringWithFormat:@"G: %.3f", greenBG];
-//    self.blueBackgroundValueLabel.text = [NSString stringWithFormat:@"B: %.3f", blueBG];
-//    self.alphaBackgroundValueLabel.text = [NSString stringWithFormat:@"A: %.3f", alphaBG];
-    //not counting properly fsr
-    
-    
     [self changeBackgroundColor];
-    [self winningConditions];
+    [self hasWon:([self winningConditions])];
 }
 
-- (void)winningConditions
+- (BOOL)winningConditions
 {
-//    NSLog(@"BGColor: %@, Goal: %@", self.view.backgroundColor, self.colorGoalView.backgroundColor);
+    CGColorRef color1 = [self.colorGoalView.backgroundColor CGColor];
+    CGColorRef color2 = [self.view.backgroundColor CGColor];
     
-    if ([self.view.backgroundColor isEqual:self.colorGoalView.backgroundColor])
+    if (CGColorGetColorSpace(color1) == CGColorGetColorSpace(color2))
+    {
+        NSUInteger componentsNumber = CGColorGetNumberOfComponents(color1);
+        CGFloat tolerance = 0.0001;
+        
+        const CGFloat *components1 = CGColorGetComponents(color1);
+        const CGFloat *components2 = CGColorGetComponents(color2);
+        
+        for (NSUInteger i = 0; i < componentsNumber; i++)
+        {
+            CGFloat quotient = components1[i] / components2[i];
+            if ((fabs(quotient) - 1) > tolerance)
+            {
+                return NO;
+            }
+        }
+    }
+    return YES;
+}
+
+- (void)hasWon:(BOOL)boolean
+{
+    if (boolean)
     {
         self.gameLabel.text = @"Winner!";
         self.refreshGameButton.hidden = NO;
@@ -344,7 +428,7 @@
 
 - (IBAction)refreshGameButtonTapped:(id)sender
 {
-    [self chooseGoalColor];
+    [self chooseGoalColorWithDifficulty:self.currentDifficulty];
 }
 
 /*
@@ -378,11 +462,24 @@
     set up values for each difficulty (increment, alpha starting value)
 
  more advanced stuff/issues:
-    figure out why brown doesn't ever match
     RGBA values for BG should print properly
     set up a tap counter to get score
     check out how it looks on other devices
     set up options for difficulty and hiding fields.  an options screen?
+    randomize starter color--that can be another option
+    a slider to control increment value for higher levels
+    possible multiple views, one for each difficulty, so that I can customize the appearance and spacing for what's pertinent on each
+    fill arrays with colors!
+    take away alpha button for easy and medium colors
+    five difficulties: very easy and easy have no alpha, medium has .25 increment alpha, hard has .1, and master has .05
+ */
+
+/*
+ v. easy: 15 taps or less par (.1 ea/tap)
+ easy: 25? taps or less (.05 ea/t with options of .1?)
+ medium: 40? (.05/t w/ opt?)
+ hard: 60? (.02/ w/op of 0.5 and .1)
+ master: 100? (.01 w/3op)
  */
 
 @end

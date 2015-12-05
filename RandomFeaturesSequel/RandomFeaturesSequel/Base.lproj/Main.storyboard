@@ -1051,6 +1051,85 @@
             </objects>
             <point key="canvasLocation" x="1054.5" y="525.5"/>
         </scene>
+        <!--Tester-->
+        <scene sceneID="uUs-B1-kVl">
+            <objects>
+                <viewController id="3qQ-Co-y3V" customClass="AMYTestingColorsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vWl-G3-yH4"/>
+                        <viewControllerLayoutGuide type="bottom" id="VeJ-Hg-YRV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FiB-cj-WpH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Pw-w0-gi0">
+                                <rect key="frame" x="0.0" y="20" width="320" height="100"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="unD-NM-Fpa"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6XF-3W-l1z">
+                                <rect key="frame" x="0.0" y="120" width="320" height="100"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ehc-Y6-Idr">
+                                <rect key="frame" x="0.0" y="220" width="320" height="100"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WBV-s0-CEY">
+                                <rect key="frame" x="0.0" y="320" width="320" height="100"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wje-sA-5PV">
+                                <rect key="frame" x="0.0" y="420" width="320" height="100"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WBV-s0-CEY" firstAttribute="centerX" secondItem="FiB-cj-WpH" secondAttribute="centerX" id="3Un-lt-Wxt"/>
+                            <constraint firstItem="Ehc-Y6-Idr" firstAttribute="top" secondItem="6XF-3W-l1z" secondAttribute="bottom" id="ANw-hf-VXV"/>
+                            <constraint firstItem="3Pw-w0-gi0" firstAttribute="centerX" secondItem="FiB-cj-WpH" secondAttribute="centerX" id="Atg-ze-pyU"/>
+                            <constraint firstItem="WBV-s0-CEY" firstAttribute="width" secondItem="FiB-cj-WpH" secondAttribute="width" id="Ddb-8w-cgW"/>
+                            <constraint firstItem="wje-sA-5PV" firstAttribute="width" secondItem="FiB-cj-WpH" secondAttribute="width" id="DvC-HU-oLq"/>
+                            <constraint firstItem="3Pw-w0-gi0" firstAttribute="top" secondItem="vWl-G3-yH4" secondAttribute="bottom" id="ECN-Qf-Hwn"/>
+                            <constraint firstItem="6XF-3W-l1z" firstAttribute="width" secondItem="FiB-cj-WpH" secondAttribute="width" id="F2P-eJ-IZC"/>
+                            <constraint firstItem="6XF-3W-l1z" firstAttribute="height" secondItem="3Pw-w0-gi0" secondAttribute="height" id="I9j-OU-V9s"/>
+                            <constraint firstItem="wje-sA-5PV" firstAttribute="centerX" secondItem="FiB-cj-WpH" secondAttribute="centerX" id="PBK-sN-F8P"/>
+                            <constraint firstItem="wje-sA-5PV" firstAttribute="height" secondItem="WBV-s0-CEY" secondAttribute="height" id="T0B-vO-nFh"/>
+                            <constraint firstItem="Ehc-Y6-Idr" firstAttribute="width" secondItem="FiB-cj-WpH" secondAttribute="width" id="crx-QA-lG2"/>
+                            <constraint firstItem="3Pw-w0-gi0" firstAttribute="width" secondItem="FiB-cj-WpH" secondAttribute="width" id="djU-d7-dQ0"/>
+                            <constraint firstItem="Ehc-Y6-Idr" firstAttribute="centerX" secondItem="FiB-cj-WpH" secondAttribute="centerX" id="eND-u1-QJr"/>
+                            <constraint firstItem="6XF-3W-l1z" firstAttribute="centerX" secondItem="FiB-cj-WpH" secondAttribute="centerX" id="egM-6G-o8I"/>
+                            <constraint firstItem="WBV-s0-CEY" firstAttribute="top" secondItem="Ehc-Y6-Idr" secondAttribute="bottom" id="fuq-wJ-Dbj"/>
+                            <constraint firstItem="6XF-3W-l1z" firstAttribute="top" secondItem="3Pw-w0-gi0" secondAttribute="bottom" id="hnz-0g-BO9"/>
+                            <constraint firstItem="WBV-s0-CEY" firstAttribute="height" secondItem="Ehc-Y6-Idr" secondAttribute="height" id="kbn-er-lBM"/>
+                            <constraint firstItem="Ehc-Y6-Idr" firstAttribute="height" secondItem="6XF-3W-l1z" secondAttribute="height" id="oK4-5j-1Zf"/>
+                            <constraint firstItem="wje-sA-5PV" firstAttribute="top" secondItem="WBV-s0-CEY" secondAttribute="bottom" id="zI3-gi-stE"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Tester" id="Vms-DX-YKC"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="colorView1" destination="3Pw-w0-gi0" id="Vos-n8-NP1"/>
+                        <outlet property="colorView2" destination="6XF-3W-l1z" id="tng-it-glS"/>
+                        <outlet property="colorView3" destination="Ehc-Y6-Idr" id="8wT-dR-435"/>
+                        <outlet property="colorView4" destination="WBV-s0-CEY" id="poT-92-eqI"/>
+                        <outlet property="colorView5" destination="wje-sA-5PV" id="Gh4-m6-obl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="534-K5-EvY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-352" y="217"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="lKk-Fz-rKY">
             <objects>
@@ -1067,6 +1146,7 @@
                         <segue destination="wBt-BL-2Pb" kind="relationship" relationship="viewControllers" id="qhb-y8-x0d"/>
                         <segue destination="HPg-Wc-ckM" kind="relationship" relationship="viewControllers" id="98E-4U-LZQ"/>
                         <segue destination="vPU-Gd-rNu" kind="relationship" relationship="viewControllers" id="MUd-eI-Bpj"/>
+                        <segue destination="3qQ-Co-y3V" kind="relationship" relationship="viewControllers" id="GiK-Pb-tkS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CQL-2d-11M" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1430,17 +1510,34 @@
                                 </subviews>
                                 <animations/>
                             </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FId-zf-2HF">
+                                <rect key="frame" x="0.0" y="20" width="320" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="Very Easy"/>
+                                    <segment title="Easy"/>
+                                    <segment title="Medium"/>
+                                    <segment title="Hard"/>
+                                    <segment title="Master"/>
+                                </segments>
+                                <connections>
+                                    <action selector="difficultyChosen:" destination="HPg-Wc-ckM" eventType="valueChanged" id="sm9-Yr-Sdd"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cdq-UL-D8a" firstAttribute="top" secondItem="7Iu-g8-8Id" secondAttribute="bottom" constant="30" id="6de-MS-U9F"/>
+                            <constraint firstItem="FId-zf-2HF" firstAttribute="top" secondItem="7Iu-g8-8Id" secondAttribute="bottom" id="9Gq-Zs-dBn"/>
                             <constraint firstItem="UnY-Ll-XdY" firstAttribute="top" secondItem="cdq-UL-D8a" secondAttribute="top" id="BBD-cJ-eiz"/>
                             <constraint firstItem="xW0-Ti-haP" firstAttribute="top" secondItem="cdq-UL-D8a" secondAttribute="top" id="Ep1-it-ymI"/>
                             <constraint firstItem="xW0-Ti-haP" firstAttribute="leading" secondItem="har-Uh-XMl" secondAttribute="leadingMargin" constant="8" id="MME-HQ-xxy"/>
                             <constraint firstItem="cdq-UL-D8a" firstAttribute="centerX" secondItem="har-Uh-XMl" secondAttribute="centerX" id="PA3-fU-BUZ"/>
+                            <constraint firstItem="FId-zf-2HF" firstAttribute="centerX" secondItem="har-Uh-XMl" secondAttribute="centerX" id="W9H-Nn-HmL"/>
                             <constraint firstItem="UnY-Ll-XdY" firstAttribute="height" secondItem="cdq-UL-D8a" secondAttribute="height" id="Yjo-5L-iad"/>
                             <constraint firstItem="rZt-yR-8jY" firstAttribute="height" secondItem="har-Uh-XMl" secondAttribute="height" multiplier="0.5" id="YzE-0v-QvF"/>
+                            <constraint firstItem="FId-zf-2HF" firstAttribute="width" secondItem="har-Uh-XMl" secondAttribute="width" id="cQg-B2-QL0"/>
                             <constraint firstItem="xW0-Ti-haP" firstAttribute="height" secondItem="cdq-UL-D8a" secondAttribute="height" id="nxl-pc-4BR"/>
                             <constraint firstItem="rZt-yR-8jY" firstAttribute="centerX" secondItem="har-Uh-XMl" secondAttribute="centerX" id="osv-H0-jhe"/>
                             <constraint firstItem="UnY-Ll-XdY" firstAttribute="trailing" secondItem="har-Uh-XMl" secondAttribute="trailingMargin" constant="-8" id="rCQ-9o-h4z"/>
@@ -1456,6 +1553,7 @@
                         <outlet property="blueBackgroundValueLabel" destination="SX5-Zc-7uV" id="Eg1-HE-wbR"/>
                         <outlet property="blueGoalValueLabel" destination="LR5-Bq-Cfi" id="1ky-md-lbP"/>
                         <outlet property="colorGoalView" destination="cdq-UL-D8a" id="0Vx-Rj-UaK"/>
+                        <outlet property="difficultySegmentedControl" destination="FId-zf-2HF" id="ZOo-mM-jKN"/>
                         <outlet property="gameLabel" destination="HdO-62-8uQ" id="LPd-Uz-2CY"/>
                         <outlet property="greenBackgroundValueLabel" destination="Uay-D8-5Uf" id="qI3-Mq-K1O"/>
                         <outlet property="greenGoalValueLabel" destination="46y-p7-eqi" id="bBB-bK-YBg"/>
