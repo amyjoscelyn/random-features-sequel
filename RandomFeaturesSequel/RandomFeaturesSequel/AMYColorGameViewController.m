@@ -83,49 +83,43 @@
     
     UIColor *orange = [UIColor orangeColor];
     UIColor *yellow = [UIColor yellowColor];
-    
-    
     UIColor *purple = [UIColor purpleColor];
     UIColor *brown  = [UIColor brownColor];
     UIColor *white  = [UIColor whiteColor]; //text color is white
     
-    self.easyColors = @[ orange, yellow, purple, brown ];
+    self.easyColors = @[ /*red, green, blue, orange, yellow, purple, brown, white*/ red, yellow ];
+    self.mediumColors = @[ brown, red ];
+    self.hardColors = @[ orange, blue ];
+    self.masterColors = @[ yellow, brown ];
+    
     self.currentColor = white;
-    
-    
-    self.mediumColors = @[  ];
-    
-    
-    
-    self.hardColors = @[  ];
-    
-    
-    
-    self.masterColors = @[  ];
 }
 
-- (IBAction)difficultyChosen:(UISegmentedControl *)sender
+- (IBAction)difficultyChosen:(UISegmentedControl *)sender //the difficulty should be chosen on a settings menu or the like, out of the way and only brought down when someone wants to change things up
 {
+    NSString *difficulty = @"";
+    
     if (sender.selectedSegmentIndex == 0)
     {
-        [self chooseGoalColorWithDifficulty:@"very easy"];
+        difficulty = @"very easy";
     }
     else if (sender.selectedSegmentIndex == 1)
     {
-        [self chooseGoalColorWithDifficulty:@"easy"];
+        difficulty = @"easy";
     }
     else if (sender.selectedSegmentIndex == 2)
     {
-        [self chooseGoalColorWithDifficulty:@"medium"];
+        difficulty = @"medium";
     }
     else if (sender.selectedSegmentIndex == 3)
     {
-        [self chooseGoalColorWithDifficulty:@"hard"];
+        difficulty = @"hard";
     }
     else
     {
-        [self chooseGoalColorWithDifficulty:@"master"];
+        difficulty = @"master";
     }
+    [self chooseGoalColorWithDifficulty:difficulty];
 }
 
 - (void)chooseGoalColorWithDifficulty:(NSString *)difficulty
@@ -134,17 +128,17 @@
     
     if ([difficulty isEqualToString:@"very easy"])
     {
-//        colorsArray = self.very
+        colorsArray = [self.veryEasyColors mutableCopy];
     }
-    else if ([difficulty isEqualToString:@"very easy"])
+    else if ([difficulty isEqualToString:@"easy"])
     {
         colorsArray = [self.easyColors mutableCopy];
     }
-    else if ([difficulty isEqualToString:@"very easy"])
+    else if ([difficulty isEqualToString:@"medium"])
     {
         colorsArray = [self.mediumColors mutableCopy];
     }
-    else if ([difficulty isEqualToString:@"very easy"])
+    else if ([difficulty isEqualToString:@"hard"])
     {
         colorsArray = [self.hardColors mutableCopy];
     }
@@ -161,10 +155,10 @@
     while (self.easyColors[i] == self.currentColor);
     
     self.currentDifficulty = difficulty;
-    [self setUpGameWithGoalColor:self.easyColors[i]];
+    [self setUpGameWithGoalColor:colorsArray[i] difficulty:difficulty];
 }
 
-- (void)setUpGameWithGoalColor:(UIColor *)color
+- (void)setUpGameWithGoalColor:(UIColor *)color difficulty:(NSString *)difficulty //
 {
     self.colorGoalView.backgroundColor = color;
     self.gameLabel.backgroundColor = color;
@@ -178,12 +172,6 @@
                                    self.greenBackgroundValueLabel,
                                    self.blueBackgroundValueLabel,
                                    self.alphaBackgroundValueLabel];
-    
-    for (UILabel *colorValueLabel in colorValueLabels)
-    {
-        colorValueLabel.backgroundColor = color;
-        [colorValueLabel setTextColor:[UIColor whiteColor]];
-    }
     CGFloat red, green, blue, alpha;
     [color    getRed: &red
                green: &green
@@ -195,27 +183,57 @@
     self.blueGoalValueLabel.text = [NSString stringWithFormat:@"B: %.3f", blue];
     self.alphaGoalValueLabel.text = [NSString stringWithFormat:@"A: %.3f", alpha];
     
-    [self.refreshGameButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    UIColor *textColor = [UIColor whiteColor];
+    
+    if (red > .7 && green > .7)
+    {
+        textColor = [UIColor blackColor];
+    }
+    
+    for (UILabel *colorValueLabel in colorValueLabels)
+    {
+        colorValueLabel.backgroundColor = color;
+        [colorValueLabel setTextColor:textColor];
+    }
+    [self.refreshGameButton setTitleColor:textColor forState:UIControlStateNormal];
     self.refreshGameButton.layer.borderWidth = 2.0f;
-    self.refreshGameButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.refreshGameButton.layer.borderColor = textColor.CGColor;
     self.refreshGameButton.hidden = YES;
     
     self.view.backgroundColor = [UIColor blackColor];
     self.gameLabel.text = @"Match the color!";
-    [self setUpView];
+    [self setUpViewWithDifficulty:difficulty];
 }
 
-- (void)setUpView
+- (void)setUpViewWithDifficulty:(NSString *)difficulty
 {
-    self.multiplier = 0.05;
+    if ([difficulty isEqualToString:@"very easy"] || [difficulty isEqualToString:@"easy"])
+    {
+        self.multiplier = 0.1;
+        self.alphaFloat = 1; //i should probably just hide the alpha buttons
+    }
+    else if ([difficulty isEqualToString:@"medium"])
+    {
+        self.multiplier = 0.05;
+        self.alphaFloat = 1;
+    }
+    else if ([difficulty isEqualToString:@"hard"])
+    {
+        self.multiplier = 0.05;
+        self.alphaFloat = 0.5;
+    }
+    else
+    {
+        self.multiplier = 0.01;
+        self.alphaFloat = 0;
+    }
     
     CGFloat x = 1 / self.multiplier; //does this change based on difficulty?
     
     self.colorWithRedFloat = 0.0;
     self.colorWithGreenFloat = 0.0;
     self.colorWithBlueFloat = 0.0;
-//    self.alphaFloat = 0.5; //this should probably be 0 for easy
-    self.alphaFloat = 0.0;
+//    self.alphaFloat = 0.5; //this should probably be 1 for easy
     
     self.numberOfTimesRedButtonTapped = self.colorWithRedFloat;
     self.numberOfTimesGreenButtonTapped = self.colorWithGreenFloat;
@@ -224,6 +242,11 @@
     
     self.tapCapMax = x;
     self.tapCapMin = 0;
+    
+    self.redBackgroundValueLabel.text = [NSString stringWithFormat:@"R:"];
+    self.greenBackgroundValueLabel.text = [NSString stringWithFormat:@"G:"];
+    self.blueBackgroundValueLabel.text = [NSString stringWithFormat:@"B:"];
+    self.alphaBackgroundValueLabel.text = [NSString stringWithFormat:@"A:"];
 }
 
 - (void)changeBackgroundColor
@@ -472,6 +495,8 @@
     fill arrays with colors!
     take away alpha button for easy and medium colors
     five difficulties: very easy and easy have no alpha, medium has .25 increment alpha, hard has .1, and master has .05
+ 
+    after three or so games, the buttons stop functioning properly
  */
 
 /*
