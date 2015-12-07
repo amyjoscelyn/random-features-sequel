@@ -35,6 +35,8 @@
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *difficultySegmentedControl;
 
+@property (weak, nonatomic) IBOutlet UIButton *hideFeatureButton;
+
 @property (nonatomic) NSUInteger numberOfTimesRedButtonTapped;
 @property (nonatomic) NSUInteger numberOfTimesGreenButtonTapped;
 @property (nonatomic) NSUInteger numberOfTimesBlueButtonTapped;
@@ -463,6 +465,33 @@
 - (IBAction)refreshGameButtonTapped:(id)sender
 {
     [self chooseGoalColorWithDifficulty:self.currentDifficulty];
+}
+
+- (IBAction)hideFeatureButtonTapped:(id)sender
+{
+    if ([self.hideFeatureButton.titleLabel.text isEqualToString:@"⚪️"])
+    {
+        self.redBackgroundValueLabel.hidden = YES;
+        self.greenBackgroundValueLabel.hidden = YES;
+        self.blueBackgroundValueLabel.hidden = YES;
+        self.alphaBackgroundValueLabel.hidden = YES;
+        
+        self.hideFeatureButton.titleLabel.text = @"🔘"; //not actually changing it--set the state of it, pickin fruit
+    }
+    else if ([self.hideFeatureButton.titleLabel.text isEqualToString:@"🔘"])
+        //this doesn't register often yet
+    {
+        self.redGoalValueLabel.hidden = YES;
+        self.greenGoalValueLabel.hidden = YES;
+        self.blueGoalValueLabel.hidden = YES;
+        self.alphaGoalValueLabel.hidden = YES;
+        
+        self.hideFeatureButton.titleLabel.text = @"⚫️";
+    }
+    else
+    {
+        //reveal everything again
+    }
 }
 
 /*
