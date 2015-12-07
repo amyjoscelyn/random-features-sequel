@@ -39,13 +39,9 @@
     UIColor *coral = [UIColor colorWithRed:1 green:0 blue:.25 alpha:1];
     UIColor *periwinkle = [UIColor colorWithRed:.5 green:.5 blue:1 alpha:1];
     UIColor *seaGreen = [UIColor colorWithRed:0 green:.5 blue:.5 alpha:1];
-    UIColor *springGreen = [UIColor colorWithRed:.45 green:.75 blue:.5 alpha:1];
-    UIColor *dustyRose = [UIColor colorWithRed:.6 green:0 blue:.2 alpha:1];
-    UIColor *tin = [UIColor colorWithRed:.5 green:.5 blue:.5 alpha:1];
-    UIColor *lime = [UIColor colorWithRed:.5 green:.75 blue:0 alpha:1];
-    UIColor *darkRed = [UIColor colorWithRed:.5 green:0 blue:.1 alpha:1];
-    UIColor *turquoise = [UIColor colorWithRed:0 green:1 blue:1 alpha:1];
-    UIColor *darkBlue = [UIColor colorWithRed:0 green:.2 blue:.4 alpha:1];
+    
+    
+    
     /*
      .2 .5 0 1
      .2 .5 .5 1

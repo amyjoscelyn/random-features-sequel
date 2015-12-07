@@ -80,16 +80,27 @@
     
     self.veryEasyColors = @[ red, green, blue ];
     
-    
     UIColor *orange = [UIColor orangeColor];
     UIColor *yellow = [UIColor yellowColor];
     UIColor *purple = [UIColor purpleColor];
     UIColor *brown  = [UIColor brownColor];
-    UIColor *white  = [UIColor whiteColor]; //text color is white
+    UIColor *white  = [UIColor whiteColor];
     
-    self.easyColors = @[ /*red, green, blue, orange, yellow, purple, brown, white*/ red, yellow ];
-    self.mediumColors = @[ brown, red ];
-    self.hardColors = @[ orange, blue ];
+    self.easyColors = @[ red, green, blue, orange, yellow, purple, brown, white ];
+    
+    UIColor *dustyRose = [UIColor colorWithRed:.6 green:0 blue:.2 alpha:1];
+    UIColor *tin = [UIColor colorWithRed:.5 green:.5 blue:.5 alpha:1];
+    UIColor *lime = [UIColor colorWithRed:.5 green:.75 blue:0 alpha:1];
+    UIColor *darkRed = [UIColor colorWithRed:.5 green:0 blue:.1 alpha:1];
+    UIColor *turquoise = [UIColor colorWithRed:0 green:1 blue:1 alpha:1];
+    UIColor *darkBlue = [UIColor colorWithRed:0 green:.2 blue:.4 alpha:1];
+
+    self.mediumColors = @[ /*orange, yellow, purple, brown, white,*/ dustyRose, tin, lime, darkRed, turquoise, darkBlue ];
+    
+    UIColor *springGreen = [UIColor colorWithRed:.45 green:.75 blue:.5 alpha:1];
+    
+    self.hardColors = @[ /*darkRed, darkBlue, dustyRose, tin, lime, turquoise,*/ springGreen, white ];
+    
     self.masterColors = @[ yellow, brown ];
     
     self.currentColor = white;
@@ -152,7 +163,7 @@
     {
         i = arc4random_uniform((int)colorsArray.count);
     }
-    while (self.easyColors[i] == self.currentColor);
+    while (colorsArray[i] == self.currentColor);
     
     self.currentDifficulty = difficulty;
     [self setUpGameWithGoalColor:colorsArray[i] difficulty:difficulty];
