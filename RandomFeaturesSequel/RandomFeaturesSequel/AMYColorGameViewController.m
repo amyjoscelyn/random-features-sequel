@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *lessAlphaButton;
 @property (weak, nonatomic) IBOutlet UIButton *moreAlphaButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *playerScoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *targetScoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton *hideFeatureButton;
 @property (weak, nonatomic) IBOutlet UIButton *dismissModalButton;
 
@@ -52,6 +54,7 @@
 
 @property (nonatomic, strong) UIColor *currentColor;
 @property (nonatomic, strong) NSString *currentDifficulty;
+@property (nonatomic) NSUInteger totalButtonTaps;
 
 @property (nonatomic, strong) NSArray *veryEasyColors;
 @property (nonatomic, strong) NSArray *easyColors;
@@ -66,49 +69,66 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"difficulty: %@", self.difficulty);
+//    NSLog(@"difficulty: %@", self.difficulty);
     
     [self setGoalColors];
     [self chooseGoalColor];
-
+    
     self.colorGoalView.layer.cornerRadius = self.colorGoalView.frame.size.height/2;
     self.colorGoalView.clipsToBounds = YES;
 }
 
 - (void)setGoalColors
 {
-    UIColor *red    = [UIColor redColor]; // 1|0|0|1
-    UIColor *green  = [UIColor greenColor]; // 0|1|0|1
-    UIColor *blue   = [UIColor blueColor]; // 0|0|1|1
-    UIColor *yellow = [UIColor yellowColor]; // 1|1|0|1
-    UIColor *magenta = [UIColor magentaColor]; // 1|0|1|1
-    UIColor *cyan = [UIColor cyanColor]; // 0|1|1|1
-    UIColor *white  = [UIColor whiteColor]; // 1|1|1|1
+    UIColor *red    = [UIColor redColor];       // 1|0|0|1
+    UIColor *yellow = [UIColor yellowColor];    // 1|1|0|1
+    UIColor *green  = [UIColor greenColor];     // 0|1|0|1
+    UIColor *cyan = [UIColor cyanColor];        // 0|1|1|1
+    UIColor *blue   = [UIColor blueColor];      // 0|0|1|1
+    UIColor *magenta = [UIColor magentaColor];  // 1|0|1|1
+    UIColor *white  = [UIColor whiteColor];     // 1|1|1|1
+    UIColor *royalRed = [UIColor colorWithRed:.5 green:0 blue:0 alpha:1];
+    UIColor *royalGreen = [UIColor colorWithRed:0 green:.5 blue:0 alpha:1];
+    UIColor *royalBlue = [UIColor colorWithRed:0 green:0 blue:.5 alpha:1];
     
-    self.veryEasyColors = @[ red, green, blue, yellow, magenta, white ];
+    self.veryEasyColors = @[ red, royalRed, yellow, green, royalGreen, cyan, blue, royalBlue, magenta, white ]; //WHITE IS NOT WORKING CORRECTLY
     
-    UIColor *gray = [UIColor grayColor]; // 5|5|5|1
-    UIColor *orange = [UIColor orangeColor]; // 1|5|0|1
-    UIColor *purple = [UIColor purpleColor]; // 5|0|5|1
+    UIColor *hotPink = [UIColor colorWithRed:1 green:0 blue:.5 alpha:1];
+    UIColor *coral = [UIColor colorWithRed:1 green:.5 blue:.5 alpha:1];
+    UIColor *orange = [UIColor orangeColor];    // 1|5|0|1
+    UIColor *paleYellow = [UIColor colorWithRed:1 green:1 blue:.5 alpha:1];
+    UIColor *softGreen = [UIColor colorWithRed:.5 green:1 blue:.5 alpha:1];
+    UIColor *seaGreen = [UIColor colorWithRed:0 green:.5 blue:.5 alpha:1];
+    UIColor *weedGreen = [UIColor colorWithRed:.5 green:.5 blue:0 alpha:1];
+    UIColor *limeGreen = [UIColor colorWithRed:.5 green:1 blue:0 alpha:1];
+    UIColor *brightGreen = [UIColor colorWithRed:0 green:1 blue:.5 alpha:1];
+    UIColor *skyBlue = [UIColor colorWithRed:.5 green:1 blue:1 alpha:1];
+    UIColor *mildBlue = [UIColor colorWithRed:0 green:.5 blue:1 alpha:1];
+    UIColor *periwinkle = [UIColor colorWithRed:.5 green:.5 blue:1 alpha:1];
+    UIColor *brightPurple = [UIColor colorWithRed:.5 green:0 blue:1 alpha:1];
+    UIColor *purple = [UIColor purpleColor];    // 5|0|5|1
+    UIColor *fuschia = [UIColor colorWithRed:1 green:.5 blue:1 alpha:1];
+    UIColor *gray = [UIColor grayColor];        // 5|5|5|1
     
-    self.easyColors = @[ orange, purple, gray ];
+    self.easyColors = @[ hotPink, coral, orange, paleYellow, softGreen, seaGreen, weedGreen, limeGreen, brightGreen, skyBlue, mildBlue, periwinkle, brightPurple, purple, fuschia, gray ];
     
     UIColor *brown  = [UIColor brownColor]; // 6|4|2|1
     UIColor *dustyRose = [UIColor colorWithRed:.6 green:0 blue:.2 alpha:1];
-    UIColor *lightGray = [UIColor lightGrayColor]; // 667|667|667|1
-    UIColor *darkGray = [UIColor darkGrayColor]; // 333|333|333|1
-    UIColor *lime = [UIColor colorWithRed:.5 green:.75 blue:0 alpha:1];
-    UIColor *darkRed = [UIColor colorWithRed:.5 green:0 blue:.1 alpha:1];
-    
+    UIColor *vividGreen = [UIColor colorWithRed:.5 green:.75 blue:0 alpha:1];
     UIColor *darkBlue = [UIColor colorWithRed:0 green:.2 blue:.4 alpha:1];
-
-    self.mediumColors = @[ orange, yellow, purple, brown, white, dustyRose, lime, darkRed, darkBlue ];
+    UIColor *coralRose = [UIColor colorWithRed:1 green:0 blue:.25 alpha:1];
+    
+    self.mediumColors = @[ brown, dustyRose, vividGreen, darkBlue, coralRose ];
     
     UIColor *springGreen = [UIColor colorWithRed:.45 green:.75 blue:.5 alpha:1];
+    UIColor *darkRed = [UIColor colorWithRed:.5 green:0 blue:.1 alpha:1];
     
-    self.hardColors = @[ darkRed, darkBlue, dustyRose, lime, springGreen, white ];
+    self.hardColors = @[ springGreen, darkRed ];
     
-    self.masterColors = @[ darkGray, lightGray ];
+    UIColor *lightGray = [UIColor lightGrayColor];  // 667|667|667|1
+    UIColor *darkGray = [UIColor darkGrayColor];    // 333|333|333|1
+    
+    self.masterColors = @[ lightGray, darkGray ];
     
     self.currentColor = white;
 }
@@ -153,6 +173,8 @@
 {
     self.colorGoalView.backgroundColor = color;
     self.gameLabel.backgroundColor = color;
+    self.playerScoreLabel.backgroundColor = color;
+    self.targetScoreLabel.backgroundColor = color;
     self.currentColor = color;
     
     NSArray *colorValueLabels = @[ self.redGoalValueLabel,
@@ -174,6 +196,13 @@
     self.blueGoalValueLabel.text = [NSString stringWithFormat:@"B: %.3f", blue];
     self.alphaGoalValueLabel.text = [NSString stringWithFormat:@"A: %.3f", alpha];
     
+    NSUInteger targetScore = (red + green + blue) * 10;
+    // this is a really rudimentary score algorithm.  It works only when the increment is .1
+    // ideally this algorithm would have access to the multiplier to plug in instead of the magic number
+    // but once there are options of switching between multiple increments, the score gets a lot harder to calculate
+    // I would hate to have to figure them out for every single color and plug them in based on that color :(
+    self.targetScoreLabel.text = [NSString stringWithFormat:@"Target Score: %lu", targetScore];
+    
     UIColor *textColor = [UIColor whiteColor];
     
     if (red > .7 && green > .7)
@@ -191,8 +220,16 @@
     self.refreshGameButton.layer.borderColor = textColor.CGColor;
     self.refreshGameButton.hidden = YES;
     
-    self.view.backgroundColor = [UIColor blackColor];
+    self.gameLabel.textColor = textColor;
+    self.playerScoreLabel.textColor = textColor;
+    self.targetScoreLabel.textColor = textColor;
+    
+    self.totalButtonTaps = 0;
+    self.playerScoreLabel.text = [NSString stringWithFormat:@"Your Score: %lu", self.totalButtonTaps];
     self.gameLabel.text = @"Match the color!";
+    
+    self.view.backgroundColor = [UIColor blackColor];
+    
     [self setUpView];
 }
 
@@ -224,7 +261,7 @@
     self.colorWithRedFloat = 0.0;
     self.colorWithGreenFloat = 0.0;
     self.colorWithBlueFloat = 0.0;
-//    self.alphaFloat = 0.5; //this should probably be 1 for easy
+    //    self.alphaFloat = 0.5; //this should probably be 1 for easy
     
     self.numberOfTimesRedButtonTapped = self.colorWithRedFloat;
     self.numberOfTimesGreenButtonTapped = self.colorWithGreenFloat;
@@ -263,6 +300,8 @@
     self.greenBackgroundValueLabel.text = [NSString stringWithFormat:@"G: %.3f", greenBG];
     self.blueBackgroundValueLabel.text = [NSString stringWithFormat:@"B: %.3f", blueBG];
     self.alphaBackgroundValueLabel.text = [NSString stringWithFormat:@"A: %.3f", alphaBG];
+    
+    self.playerScoreLabel.text = [NSString stringWithFormat:@"Your Score: %lu", self.totalButtonTaps];
 }
 
 - (IBAction)makeBackgroundMoreRedButtonTapped:(UIButton *)sender
@@ -278,7 +317,7 @@
     
     self.lessRedButton.enabled = YES;
     
-//    NSLog(@"Tapped Red: %lu, %.2f", self.numberOfTimesRedButtonTapped, self.colorWithRedFloat);
+    //    NSLog(@"Tapped Red: %lu, %.2f", self.numberOfTimesRedButtonTapped, self.colorWithRedFloat);
     
     [self postButtonActions];
 }
@@ -296,7 +335,7 @@
     
     self.moreRedButton.enabled = YES;
     
-//    NSLog(@"Tapped Red: %lu, %.2f", self.numberOfTimesRedButtonTapped,self.colorWithRedFloat);
+    //    NSLog(@"Tapped Red: %lu, %.2f", self.numberOfTimesRedButtonTapped,self.colorWithRedFloat);
     
     [self postButtonActions];
 }
@@ -314,7 +353,7 @@
     
     self.lessGreenButton.enabled = YES;
     
-//    NSLog(@"Tapped Green: %lu, %.2f", self.numberOfTimesGreenButtonTapped, self.colorWithGreenFloat);
+    //    NSLog(@"Tapped Green: %lu, %.2f", self.numberOfTimesGreenButtonTapped, self.colorWithGreenFloat);
     
     [self postButtonActions];
 }
@@ -332,7 +371,7 @@
     
     self.moreGreenButton.enabled = YES;
     
-//    NSLog(@"Tapped Green: %lu, %.2f", self.numberOfTimesGreenButtonTapped, self.colorWithGreenFloat);
+    //    NSLog(@"Tapped Green: %lu, %.2f", self.numberOfTimesGreenButtonTapped, self.colorWithGreenFloat);
     
     [self postButtonActions];
 }
@@ -350,7 +389,7 @@
     
     self.lessBlueButton.enabled = YES;
     
-//    NSLog(@"Tapped Blue: %lu, %.2f", self.numberOfTimesBlueButtonTapped, self.colorWithBlueFloat);
+    //    NSLog(@"Tapped Blue: %lu, %.2f", self.numberOfTimesBlueButtonTapped, self.colorWithBlueFloat);
     
     [self postButtonActions];
 }
@@ -368,7 +407,7 @@
     
     self.moreBlueButton.enabled = YES;
     
-//    NSLog(@"Tapped Blue: %lu, %.2f", self.numberOfTimesBlueButtonTapped, self.colorWithBlueFloat);
+    //    NSLog(@"Tapped Blue: %lu, %.2f", self.numberOfTimesBlueButtonTapped, self.colorWithBlueFloat);
     
     [self postButtonActions];
 }
@@ -386,7 +425,7 @@
     
     self.lessAlphaButton.enabled = YES;
     
-//    NSLog(@"Tapped Alpha: %lu, %.2f", self.numberOfTimesAlphaButtonTapped, self.alphaFloat);
+    //    NSLog(@"Tapped Alpha: %lu, %.2f", self.numberOfTimesAlphaButtonTapped, self.alphaFloat);
     
     [self postButtonActions];
 }
@@ -404,13 +443,14 @@
     
     self.moreAlphaButton.enabled = YES;
     
-//    NSLog(@"Tapped Alpha: %lu, %.2f", self.numberOfTimesAlphaButtonTapped, self.alphaFloat);
+    //    NSLog(@"Tapped Alpha: %lu, %.2f", self.numberOfTimesAlphaButtonTapped, self.alphaFloat);
     
     [self postButtonActions];
 }
 
 - (void)postButtonActions
 {
+    self.totalButtonTaps++;
     [self changeBackgroundColor];
     [self hasWon:([self winningConditions])];
 }
@@ -524,49 +564,73 @@
 
 /*
  Things I want to implement:
-    round out the stacks so they look prettier... can stacks be rounded?
-    add label for color name, so if RGBA values aren't shown the target color name can still be
-    set which options can be hidden
-    set up values for each difficulty (increment, alpha starting value)
-
+ round out the stacks so they look prettier... can stacks be rounded?
+ add label for color name, so if RGBA values aren't shown the target color name can still be ??????
+ set which options can be hidden
+ set up values for each difficulty (increment, alpha starting value)
+ disable difficulties that are 'coming soon!' so I don't need to focus on them yet
+ 
  more advanced stuff/issues:
  
-    set up a tap counter to get score
-    check out how it looks on other devices
-    set up options for difficulty and hiding fields.  an options screen?
-    randomize starter color--that can be another option (instead of default black background)
-    a slider to control increment value for higher levels
-    possible multiple views, one for each difficulty, so that I can customize the appearance and spacing for what's pertinent on each
-    fill arrays with colors!
-    take away alpha button for easy and medium colors
-    five difficulties: very easy and easy have no alpha, medium has .25 increment alpha, hard has .1, and master has .05
-    I can add an even more zen mode, where there is no target and you just press the buttons to make colors
+ set up a tap counter to get score
+ check out how it looks on other devices
+ set up options for difficulty and hiding fields.  an options screen?
+ randomize starter color--that can be another option (instead of default black background)
+ a slider to control increment value for higher levels
+ possible multiple views, one for each difficulty, so that I can customize the appearance and spacing for what's pertinent on each
+ fill arrays with colors!
+ take away alpha button for easy and medium colors
+ five difficulties: very easy and easy have no alpha, medium has .25 increment alpha, hard has .1, and master has .05
+ I can add an even more zen mode, where there is no target and you just press the buttons to make colors
+ Make cool background for difficulty selection screen
+ Make those buttons look nice
+ Make everything look nice
  
-    after three or so games, the buttons stop functioning properly
+ port this to a new project
+ set it up with multiple classes so it's not all on the VC
+ */
+
+/*
+ things to hide:
+    current background values
+    goal color values
+    target score
+    your score
+    "clean look"--all unnecessary labels, all text (buttons should say nothing on them, just "")
+ 
+ options:
+    hide things
+    change difficulty
+    start "light"--with white instead of black
+ 
+ if I don't have the alpha buttons, then I don't need the labels saying what the alpha is supposed to be, either
  */
 
 /*
  v. easy: 15 taps or less par (.1 ea/tap)
-            colors should only have values of 1
+ colors should only have values of 1
  easy: 25? taps or less (.05 ea/t with options of .1?)
-            colors may have values of 1 or .5
+ colors may have values of 1 or .5
  medium: 40? (.05/t w/ opt?)
-            colors may have above values as well as .25, .75
-            plus .2, .4, .6, .8
+ colors may have above values as well as .25, .75
+ plus .2, .4, .6, .8
  hard: 60? (.02/ w/op of 0.5 and .1)
-            values as above plus .1, .3, .7, .9, and all .05s
+ values as above plus .1, .3, .7, .9, and all .05s
  master: 100? (.01 w/3op)
-            colors may be any value (I feel like there should be another intermediary level
+ colors may be any value (I feel like there should be another intermediary level
  */
 
 /*
  All levels by values allowed:
-    simple: values equiv only to 1              (simple)
-            values equiv to 1 or .5             ()
-            values above plus .2, .4, .6, .8    (challenging)
-            above plus .1, .3, .7, .9           ()
-            plus all .05s                       (difficult)
-            plus everything                     (extreme)
+ simple: values equiv only to 1      (simple)
+ values equiv to 1 or .5             ()
+ values equiv to .25, .5, .75, or 1  ()
+ values above plus .2, .4, .6, .8    (challenging)
+ above plus .1, .3, .7, .9           ()
+ plus all .05s                       (difficult)
+ plus everything                     (extreme)
+ 
+ SHOULD THE VERY-EASIEST LEVEL BE SET BECAUSE VALUES ARE ONLY 1, OR SHOULD IT BE ONLY ONE COLOR IS CLICKED ON?  THAT WOULD ALLOW .5 AND 1, AND SAVE MIXING COLORS TO EASY
  */
 
 @end

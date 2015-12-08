@@ -28,7 +28,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender
 {
     NSString *difficulty = @"";
-    NSLog(@"DIFFICULTY SELECTED: %@", sender.titleLabel.text);
+//    NSLog(@"DIFFICULTY SELECTED: %@", sender.titleLabel.text);
     
     if ([sender.titleLabel.text isEqualToString:@"Very Easy"])
     {
