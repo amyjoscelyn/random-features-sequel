@@ -69,6 +69,7 @@
     [super viewDidLoad];
     
     [self setGoalColors];
+    [self chooseGoalColorWithDifficulty:self.difficulty];
 
     self.colorGoalView.layer.cornerRadius = self.colorGoalView.frame.size.height/2;
     self.colorGoalView.clipsToBounds = YES;
@@ -108,34 +109,34 @@
     self.currentColor = white;
 }
 
-- (IBAction)difficultyChosen:(UISegmentedControl *)sender //the difficulty should be chosen on a settings menu or the like, out of the way and only brought down when someone wants to change things up
-{
-    NSString *difficulty = @"";
-    
-    if (sender.selectedSegmentIndex == 0)
-    {
-        difficulty = @"very easy";
-    }
-    else if (sender.selectedSegmentIndex == 1)
-    {
-        difficulty = @"easy";
-    }
-    else if (sender.selectedSegmentIndex == 2)
-    {
-        difficulty = @"medium";
-    }
-    else if (sender.selectedSegmentIndex == 3)
-    {
-        difficulty = @"hard";
-    }
-    else
-    {
-        difficulty = @"master";
-    }
-    [self chooseGoalColorWithDifficulty:difficulty];
-}
+//- (IBAction)difficultyChosen:(UISegmentedControl *)sender //the difficulty should be chosen on a settings menu or the like, out of the way and only brought down when someone wants to change things up
+//{
+//    NSString *difficulty = @"";
+//    
+//    if (sender.selectedSegmentIndex == 0)
+//    {
+//        difficulty = @"very easy";
+//    }
+//    else if (sender.selectedSegmentIndex == 1)
+//    {
+//        difficulty = @"easy";
+//    }
+//    else if (sender.selectedSegmentIndex == 2)
+//    {
+//        difficulty = @"medium";
+//    }
+//    else if (sender.selectedSegmentIndex == 3)
+//    {
+//        difficulty = @"hard";
+//    }
+//    else
+//    {
+//        difficulty = @"master";
+//    }
+//    [self chooseGoalColorWithDifficulty:difficulty];
+//}
 
-- (void)chooseGoalColorWithDifficulty:(NSString *)difficulty
+- (void)chooseGoalColorWithDifficulty:(NSString *)difficulty //this parameter is redundant, I can access it through the property
 {
     NSMutableArray *colorsArray = [[NSMutableArray alloc] init];
     
@@ -476,7 +477,7 @@
         self.blueBackgroundValueLabel.hidden = YES;
         self.alphaBackgroundValueLabel.hidden = YES;
         
-        self.hideFeatureButton.titleLabel.text = @"🔘"; //not actually changing it--set the state of it, pickin fruit
+        [self.hideFeatureButton setTitle:@"🔘" forState:UIControlStateNormal];
     }
     else if ([self.hideFeatureButton.titleLabel.text isEqualToString:@"🔘"])
         //this doesn't register often yet
@@ -486,11 +487,20 @@
         self.blueGoalValueLabel.hidden = YES;
         self.alphaGoalValueLabel.hidden = YES;
         
-        self.hideFeatureButton.titleLabel.text = @"⚫️";
+        [self.hideFeatureButton setTitle:@"⚫️" forState:UIControlStateNormal];
     }
     else
     {
-        //reveal everything again
+        self.redBackgroundValueLabel.hidden = NO;
+        self.greenBackgroundValueLabel.hidden = NO;
+        self.blueBackgroundValueLabel.hidden = NO;
+        self.alphaBackgroundValueLabel.hidden = NO;
+        self.redGoalValueLabel.hidden = NO;
+        self.greenGoalValueLabel.hidden = NO;
+        self.blueGoalValueLabel.hidden = NO;
+        self.alphaGoalValueLabel.hidden = NO;
+        
+        [self.hideFeatureButton setTitle:@"⚪️" forState:UIControlStateNormal];
     }
 }
 

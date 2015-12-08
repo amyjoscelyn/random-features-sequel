@@ -10,4 +10,6 @@
 
 @interface AMYColorGameViewController : UIViewController
 
+@property (nonatomic, strong) NSString *difficulty;
+
 @end

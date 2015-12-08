@@ -10,6 +10,7 @@
 		3D3176A41C1290530022C1DB /* AMYTestingColorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3176A31C1290530022C1DB /* AMYTestingColorsViewController.m */; };
 		3D7F326C1C0F90D200B7995E /* AMYColorGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F326B1C0F90D200B7995E /* AMYColorGameViewController.m */; };
 		3D7F326F1C0FA69600B7995E /* AMYShapesAndBordersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7F326E1C0FA69600B7995E /* AMYShapesAndBordersViewController.m */; };
+		3D83FAFE1C17502000294D2C /* AMYGameDifficultyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D83FAFD1C17502000294D2C /* AMYGameDifficultyViewController.m */; };
 		3DC0A3AB1C063E210041CA74 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC0A3AA1C063E210041CA74 /* main.m */; };
 		3DC0A3AE1C063E210041CA74 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC0A3AD1C063E210041CA74 /* AppDelegate.m */; };
 		3DC0A3B41C063E210041CA74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DC0A3B21C063E210041CA74 /* Main.storyboard */; };
@@ -47,6 +48,8 @@
 		3D7F326B1C0F90D200B7995E /* AMYColorGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMYColorGameViewController.m; sourceTree = "<group>"; };
 		3D7F326D1C0FA69600B7995E /* AMYShapesAndBordersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMYShapesAndBordersViewController.h; sourceTree = "<group>"; };
 		3D7F326E1C0FA69600B7995E /* AMYShapesAndBordersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMYShapesAndBordersViewController.m; sourceTree = "<group>"; };
+		3D83FAFC1C17502000294D2C /* AMYGameDifficultyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMYGameDifficultyViewController.h; sourceTree = "<group>"; };
+		3D83FAFD1C17502000294D2C /* AMYGameDifficultyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMYGameDifficultyViewController.m; sourceTree = "<group>"; };
 		3DC0A3A61C063E210041CA74 /* RandomFeaturesSequel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomFeaturesSequel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC0A3AA1C063E210041CA74 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3DC0A3AC1C063E210041CA74 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				3DC0A3E31C0641410041CA74 /* AMYBottomColorChooserViewController.m */,
 				3DF7690F1C0BD05F006B94FC /* AMYButtonCurveViewController.h */,
 				3DF769101C0BD05F006B94FC /* AMYButtonCurveViewController.m */,
+				3D83FAFC1C17502000294D2C /* AMYGameDifficultyViewController.h */,
+				3D83FAFD1C17502000294D2C /* AMYGameDifficultyViewController.m */,
 				3D7F326A1C0F90D200B7995E /* AMYColorGameViewController.h */,
 				3D7F326B1C0F90D200B7995E /* AMYColorGameViewController.m */,
 				3D7F326D1C0FA69600B7995E /* AMYShapesAndBordersViewController.h */,
@@ -303,6 +308,7 @@
 				3DC0A3E11C06412F0041CA74 /* AMYTopColorChooserViewController.m in Sources */,
 				3D3176A41C1290530022C1DB /* AMYTestingColorsViewController.m in Sources */,
 				3DC0A3DE1C0640EF0041CA74 /* AMYGradientChooserViewController.m in Sources */,
+				3D83FAFE1C17502000294D2C /* AMYGameDifficultyViewController.m in Sources */,
 				3DC0A3E41C0641410041CA74 /* AMYBottomColorChooserViewController.m in Sources */,
 				3D7F326C1C0F90D200B7995E /* AMYColorGameViewController.m in Sources */,
 				3D7F326F1C0FA69600B7995E /* AMYShapesAndBordersViewController.m in Sources */,
