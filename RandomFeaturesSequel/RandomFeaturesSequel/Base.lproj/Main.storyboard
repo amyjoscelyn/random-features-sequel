@@ -1518,6 +1518,14 @@
                                     <action selector="hideFeatureButtonTapped:" destination="HPg-Wc-ckM" eventType="touchUpInside" id="k3b-oC-tgO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0G-LO-HuN">
+                                <rect key="frame" x="124" y="518" width="73" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Go Back"/>
+                                <connections>
+                                    <action selector="dismissModalButtonTapped:" destination="HPg-Wc-ckM" eventType="touchUpInside" id="bRu-FS-4CK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1544,6 +1552,7 @@
                         <outlet property="blueBackgroundValueLabel" destination="SX5-Zc-7uV" id="Eg1-HE-wbR"/>
                         <outlet property="blueGoalValueLabel" destination="LR5-Bq-Cfi" id="1ky-md-lbP"/>
                         <outlet property="colorGoalView" destination="cdq-UL-D8a" id="0Vx-Rj-UaK"/>
+                        <outlet property="dismissModalButton" destination="Y0G-LO-HuN" id="zns-4Y-NBd"/>
                         <outlet property="gameLabel" destination="HdO-62-8uQ" id="LPd-Uz-2CY"/>
                         <outlet property="greenBackgroundValueLabel" destination="Uay-D8-5Uf" id="qI3-Mq-K1O"/>
                         <outlet property="greenGoalValueLabel" destination="46y-p7-eqi" id="bBB-bK-YBg"/>
@@ -1587,26 +1596,41 @@
                                             <constraint firstAttribute="height" constant="45" id="giZ-xX-MVI"/>
                                         </constraints>
                                         <state key="normal" title="Very Easy"/>
+                                        <connections>
+                                            <segue destination="HPg-Wc-ckM" kind="presentation" id="b9y-VF-bIK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pD-20-Nsh">
                                         <rect key="frame" x="0.0" y="75" width="100" height="45"/>
                                         <animations/>
                                         <state key="normal" title="Easy"/>
+                                        <connections>
+                                            <segue destination="HPg-Wc-ckM" kind="presentation" id="EOz-mh-4I3"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyI-nj-shi">
                                         <rect key="frame" x="0.0" y="150" width="100" height="45"/>
                                         <animations/>
                                         <state key="normal" title="Medium"/>
+                                        <connections>
+                                            <segue destination="HPg-Wc-ckM" kind="presentation" id="Quo-ZH-wtd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-s3-sbj">
                                         <rect key="frame" x="0.0" y="225" width="100" height="45"/>
                                         <animations/>
                                         <state key="normal" title="Hard"/>
+                                        <connections>
+                                            <segue destination="HPg-Wc-ckM" kind="presentation" id="r7p-nZ-bfA"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eha-h6-3UL">
                                         <rect key="frame" x="0.0" y="300" width="100" height="45"/>
                                         <animations/>
                                         <state key="normal" title="Master"/>
+                                        <connections>
+                                            <segue destination="HPg-Wc-ckM" kind="presentation" id="FRZ-0k-JhC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
@@ -1895,4 +1919,7 @@
             <point key="canvasLocation" x="436" y="1439"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="b9y-VF-bIK"/>
+    </inferredMetricsTieBreakers>
 </document>

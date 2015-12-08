@@ -33,9 +33,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *lessAlphaButton;
 @property (weak, nonatomic) IBOutlet UIButton *moreAlphaButton;
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *difficultySegmentedControl;
-
 @property (weak, nonatomic) IBOutlet UIButton *hideFeatureButton;
+@property (weak, nonatomic) IBOutlet UIButton *dismissModalButton;
 
 @property (nonatomic) NSUInteger numberOfTimesRedButtonTapped;
 @property (nonatomic) NSUInteger numberOfTimesGreenButtonTapped;
@@ -67,15 +66,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"difficulty: %@", self.difficulty);
     
     [self setGoalColors];
-    [self chooseGoalColorWithDifficulty:self.difficulty];
+    [self chooseGoalColor];
 
     self.colorGoalView.layer.cornerRadius = self.colorGoalView.frame.size.height/2;
     self.colorGoalView.clipsToBounds = YES;
 }
 
-- (void)setGoalColors //WithDifficulty:(NSString *)difficulty
+- (void)setGoalColors
 {
     UIColor *red    = [UIColor redColor];
     UIColor *green  = [UIColor greenColor];
@@ -98,61 +98,34 @@
     UIColor *turquoise = [UIColor colorWithRed:0 green:1 blue:1 alpha:1];
     UIColor *darkBlue = [UIColor colorWithRed:0 green:.2 blue:.4 alpha:1];
 
-    self.mediumColors = @[ /*orange, yellow, purple, brown, white,*/ dustyRose, tin, lime, darkRed, turquoise, darkBlue ];
+    self.mediumColors = @[ orange, yellow, purple, brown, white, dustyRose, tin, lime, darkRed, turquoise, darkBlue ];
     
     UIColor *springGreen = [UIColor colorWithRed:.45 green:.75 blue:.5 alpha:1];
     
-    self.hardColors = @[ /*darkRed, darkBlue, dustyRose, tin, lime, turquoise,*/ springGreen, white ];
+    self.hardColors = @[ darkRed, darkBlue, dustyRose, tin, lime, turquoise, springGreen, white ];
     
     self.masterColors = @[ yellow, brown ];
     
     self.currentColor = white;
 }
 
-//- (IBAction)difficultyChosen:(UISegmentedControl *)sender //the difficulty should be chosen on a settings menu or the like, out of the way and only brought down when someone wants to change things up
-//{
-//    NSString *difficulty = @"";
-//    
-//    if (sender.selectedSegmentIndex == 0)
-//    {
-//        difficulty = @"very easy";
-//    }
-//    else if (sender.selectedSegmentIndex == 1)
-//    {
-//        difficulty = @"easy";
-//    }
-//    else if (sender.selectedSegmentIndex == 2)
-//    {
-//        difficulty = @"medium";
-//    }
-//    else if (sender.selectedSegmentIndex == 3)
-//    {
-//        difficulty = @"hard";
-//    }
-//    else
-//    {
-//        difficulty = @"master";
-//    }
-//    [self chooseGoalColorWithDifficulty:difficulty];
-//}
-
-- (void)chooseGoalColorWithDifficulty:(NSString *)difficulty //this parameter is redundant, I can access it through the property
+- (void)chooseGoalColor
 {
     NSMutableArray *colorsArray = [[NSMutableArray alloc] init];
     
-    if ([difficulty isEqualToString:@"very easy"])
+    if ([self.difficulty isEqualToString:@"very easy"])
     {
         colorsArray = [self.veryEasyColors mutableCopy];
     }
-    else if ([difficulty isEqualToString:@"easy"])
+    else if ([self.difficulty isEqualToString:@"easy"])
     {
         colorsArray = [self.easyColors mutableCopy];
     }
-    else if ([difficulty isEqualToString:@"medium"])
+    else if ([self.difficulty isEqualToString:@"medium"])
     {
         colorsArray = [self.mediumColors mutableCopy];
     }
-    else if ([difficulty isEqualToString:@"hard"])
+    else if ([self.difficulty isEqualToString:@"hard"])
     {
         colorsArray = [self.hardColors mutableCopy];
     }
@@ -168,11 +141,11 @@
     }
     while (colorsArray[i] == self.currentColor);
     
-    self.currentDifficulty = difficulty;
-    [self setUpGameWithGoalColor:colorsArray[i] difficulty:difficulty];
+    self.currentDifficulty = self.difficulty;
+    [self setUpGameWithGoalColor:colorsArray[i]];
 }
 
-- (void)setUpGameWithGoalColor:(UIColor *)color difficulty:(NSString *)difficulty //
+- (void)setUpGameWithGoalColor:(UIColor *)color
 {
     self.colorGoalView.backgroundColor = color;
     self.gameLabel.backgroundColor = color;
@@ -216,22 +189,22 @@
     
     self.view.backgroundColor = [UIColor blackColor];
     self.gameLabel.text = @"Match the color!";
-    [self setUpViewWithDifficulty:difficulty];
+    [self setUpView];
 }
 
-- (void)setUpViewWithDifficulty:(NSString *)difficulty
+- (void)setUpView
 {
-    if ([difficulty isEqualToString:@"very easy"] || [difficulty isEqualToString:@"easy"])
+    if ([self.difficulty isEqualToString:@"very easy"] || [self.difficulty isEqualToString:@"easy"])
     {
         self.multiplier = 0.1;
         self.alphaFloat = 1; //i should probably just hide the alpha buttons
     }
-    else if ([difficulty isEqualToString:@"medium"])
+    else if ([self.difficulty isEqualToString:@"medium"])
     {
         self.multiplier = 0.05;
         self.alphaFloat = 1;
     }
-    else if ([difficulty isEqualToString:@"hard"])
+    else if ([self.difficulty isEqualToString:@"hard"])
     {
         self.multiplier = 0.05;
         self.alphaFloat = 0.5;
@@ -261,6 +234,15 @@
     self.greenBackgroundValueLabel.text = [NSString stringWithFormat:@"G:"];
     self.blueBackgroundValueLabel.text = [NSString stringWithFormat:@"B:"];
     self.alphaBackgroundValueLabel.text = [NSString stringWithFormat:@"A:"];
+    
+    self.lessRedButton.enabled = YES;
+    self.moreRedButton.enabled = YES;
+    self.lessGreenButton.enabled = YES;
+    self.moreGreenButton.enabled = YES;
+    self.lessBlueButton.enabled = YES;
+    self.moreBlueButton.enabled = YES;
+    self.lessAlphaButton.enabled = YES;
+    self.moreAlphaButton.enabled = YES;
 }
 
 - (void)changeBackgroundColor
@@ -460,12 +442,21 @@
     {
         self.gameLabel.text = @"Winner!";
         self.refreshGameButton.hidden = NO;
+        
+        self.lessRedButton.enabled = NO;
+        self.moreRedButton.enabled = NO;
+        self.lessGreenButton.enabled = NO;
+        self.moreGreenButton.enabled = NO;
+        self.lessBlueButton.enabled = NO;
+        self.moreBlueButton.enabled = NO;
+        self.lessAlphaButton.enabled = NO;
+        self.moreAlphaButton.enabled = NO;
     }
 }
 
 - (IBAction)refreshGameButtonTapped:(id)sender
 {
-    [self chooseGoalColorWithDifficulty:self.currentDifficulty];
+    [self chooseGoalColor];
 }
 
 - (IBAction)hideFeatureButtonTapped:(id)sender
@@ -504,6 +495,11 @@
     }
 }
 
+- (IBAction)dismissModalButtonTapped:(id)sender
+{
+    [self.delegate AMYColorGameViewControllerDidCancel:self];
+}
+
 /*
  What I would like to do in here is give the user a color, and they have to try and match it with the background.  They have eight buttons, for RGBA values up and down, and through that they can make all of the colors they are randomly given.
  
@@ -524,27 +520,23 @@
 
 /*
  Things I want to implement:
-    a check so that a random color can't be chosen twice in a row
     round out the stacks so they look prettier... can stacks be rounded?
-    give the refresh button text more breathing room
-    raise increment to 1 for easy level
-    set up other difficulty arrays, even if they're blank
     add label for color name, so if RGBA values aren't shown the target color name can still be
     set which options can be hidden
-    set up method to handle difficulty choice
     set up values for each difficulty (increment, alpha starting value)
 
  more advanced stuff/issues:
-    RGBA values for BG should print properly
+ 
     set up a tap counter to get score
     check out how it looks on other devices
     set up options for difficulty and hiding fields.  an options screen?
-    randomize starter color--that can be another option
+    randomize starter color--that can be another option (instead of default black background)
     a slider to control increment value for higher levels
     possible multiple views, one for each difficulty, so that I can customize the appearance and spacing for what's pertinent on each
     fill arrays with colors!
     take away alpha button for easy and medium colors
     five difficulties: very easy and easy have no alpha, medium has .25 increment alpha, hard has .1, and master has .05
+    I can add an even more zen mode, where there is no target and you just press the buttons to make colors
  
     after three or so games, the buttons stop functioning properly
  */

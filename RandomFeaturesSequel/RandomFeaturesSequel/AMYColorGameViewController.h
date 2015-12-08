@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class AMYColorGameViewController;
+
+@protocol AMYColorGameViewControllerDelegate <NSObject>
+
+- (void)AMYColorGameViewControllerDidCancel:(AMYColorGameViewController *)viewController;
+
+@end
 
 @interface AMYColorGameViewController : UIViewController
 
 @property (nonatomic, strong) NSString *difficulty;
+@property (nonatomic, weak) id<AMYColorGameViewControllerDelegate> delegate;
 
 @end

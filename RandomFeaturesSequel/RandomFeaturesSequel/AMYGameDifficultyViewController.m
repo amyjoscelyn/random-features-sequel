@@ -9,7 +9,7 @@
 #import "AMYGameDifficultyViewController.h"
 #import "AMYColorGameViewController.h"
 
-@interface AMYGameDifficultyViewController ()
+@interface AMYGameDifficultyViewController () <AMYColorGameViewControllerDelegate>
 
 @end
 
@@ -20,49 +20,29 @@
     [super viewDidLoad];
 }
 
-//- (IBAction)difficultySelected:(UISegmentedControl *)sender
-//{
-//    NSString *difficulty = @"";
-//    
-//        if (sender.selectedSegmentIndex == 0)
-//        {
-//            difficulty = @"very easy";
-//        }
-//        else if (sender.selectedSegmentIndex == 1)
-//        {
-//            difficulty = @"easy";
-//        }
-//        else if (sender.selectedSegmentIndex == 2)
-//        {
-//            difficulty = @"medium";
-//        }
-//        else if (sender.selectedSegmentIndex == 3)
-//        {
-//            difficulty = @"hard";
-//        }
-//        else
-//        {
-//            difficulty = @"master";
-//        }
-//}
+- (void)AMYColorGameViewControllerDidCancel:(AMYColorGameViewController *)viewController
+{
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+}
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UISegmentedControl *)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender
 {
     NSString *difficulty = @"";
+    NSLog(@"DIFFICULTY SELECTED: %@", sender.titleLabel.text);
     
-    if (sender.selectedSegmentIndex == 0)
+    if ([sender.titleLabel.text isEqualToString:@"Very Easy"])
     {
         difficulty = @"very easy";
     }
-    else if (sender.selectedSegmentIndex == 1)
+    else if ([sender.titleLabel.text isEqualToString:@"Easy"])
     {
         difficulty = @"easy";
     }
-    else if (sender.selectedSegmentIndex == 2)
+    else if ([sender.titleLabel.text isEqualToString:@"Medium"])
     {
         difficulty = @"medium";
     }
-    else if (sender.selectedSegmentIndex == 3)
+    else if ([sender.titleLabel.text isEqualToString:@"Hard"])
     {
         difficulty = @"hard";
     }
@@ -72,6 +52,7 @@
     }
     AMYColorGameViewController *gameDVC = segue.destinationViewController;
     gameDVC.difficulty = difficulty;
+    gameDVC.delegate = self;
 }
 
 @end
