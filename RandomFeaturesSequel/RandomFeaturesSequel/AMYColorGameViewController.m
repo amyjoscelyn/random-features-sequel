@@ -77,34 +77,38 @@
 
 - (void)setGoalColors
 {
-    UIColor *red    = [UIColor redColor];
-    UIColor *green  = [UIColor greenColor];
-    UIColor *blue   = [UIColor blueColor];
+    UIColor *red    = [UIColor redColor]; // 1|0|0|1
+    UIColor *green  = [UIColor greenColor]; // 0|1|0|1
+    UIColor *blue   = [UIColor blueColor]; // 0|0|1|1
+    UIColor *yellow = [UIColor yellowColor]; // 1|1|0|1
+    UIColor *magenta = [UIColor magentaColor]; // 1|0|1|1
+    UIColor *cyan = [UIColor cyanColor]; // 0|1|1|1
+    UIColor *white  = [UIColor whiteColor]; // 1|1|1|1
     
-    self.veryEasyColors = @[ red, green, blue ];
+    self.veryEasyColors = @[ red, green, blue, yellow, magenta, white ];
     
-    UIColor *orange = [UIColor orangeColor];
-    UIColor *yellow = [UIColor yellowColor];
-    UIColor *purple = [UIColor purpleColor];
-    UIColor *brown  = [UIColor brownColor];
-    UIColor *white  = [UIColor whiteColor];
+    UIColor *gray = [UIColor grayColor]; // 5|5|5|1
+    UIColor *orange = [UIColor orangeColor]; // 1|5|0|1
+    UIColor *purple = [UIColor purpleColor]; // 5|0|5|1
     
-    self.easyColors = @[ red, green, blue, orange, yellow, purple, brown, white ];
+    self.easyColors = @[ orange, purple, gray ];
     
+    UIColor *brown  = [UIColor brownColor]; // 6|4|2|1
     UIColor *dustyRose = [UIColor colorWithRed:.6 green:0 blue:.2 alpha:1];
-    UIColor *tin = [UIColor colorWithRed:.5 green:.5 blue:.5 alpha:1];
+    UIColor *lightGray = [UIColor lightGrayColor]; // 667|667|667|1
+    UIColor *darkGray = [UIColor darkGrayColor]; // 333|333|333|1
     UIColor *lime = [UIColor colorWithRed:.5 green:.75 blue:0 alpha:1];
     UIColor *darkRed = [UIColor colorWithRed:.5 green:0 blue:.1 alpha:1];
-    UIColor *turquoise = [UIColor colorWithRed:0 green:1 blue:1 alpha:1];
+    
     UIColor *darkBlue = [UIColor colorWithRed:0 green:.2 blue:.4 alpha:1];
 
-    self.mediumColors = @[ orange, yellow, purple, brown, white, dustyRose, tin, lime, darkRed, turquoise, darkBlue ];
+    self.mediumColors = @[ orange, yellow, purple, brown, white, dustyRose, lime, darkRed, darkBlue ];
     
     UIColor *springGreen = [UIColor colorWithRed:.45 green:.75 blue:.5 alpha:1];
     
-    self.hardColors = @[ darkRed, darkBlue, dustyRose, tin, lime, turquoise, springGreen, white ];
+    self.hardColors = @[ darkRed, darkBlue, dustyRose, lime, springGreen, white ];
     
-    self.masterColors = @[ yellow, brown ];
+    self.masterColors = @[ darkGray, lightGray ];
     
     self.currentColor = white;
 }
@@ -543,10 +547,26 @@
 
 /*
  v. easy: 15 taps or less par (.1 ea/tap)
+            colors should only have values of 1
  easy: 25? taps or less (.05 ea/t with options of .1?)
+            colors may have values of 1 or .5
  medium: 40? (.05/t w/ opt?)
+            colors may have above values as well as .25, .75
+            plus .2, .4, .6, .8
  hard: 60? (.02/ w/op of 0.5 and .1)
+            values as above plus .1, .3, .7, .9, and all .05s
  master: 100? (.01 w/3op)
+            colors may be any value (I feel like there should be another intermediary level
+ */
+
+/*
+ All levels by values allowed:
+    simple: values equiv only to 1              (simple)
+            values equiv to 1 or .5             ()
+            values above plus .2, .4, .6, .8    (challenging)
+            above plus .1, .3, .7, .9           ()
+            plus all .05s                       (difficult)
+            plus everything                     (extreme)
  */
 
 @end
